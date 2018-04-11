@@ -1,0 +1,35 @@
+server:
+  port: 4001
+
+spring:
+  application:
+    name: pig-config-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/cqzqxq_lxh/pig-config.git
+---
+spring:
+  profiles: dev
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+  client:
+    serviceUrl:
+      defaultZone: http://pig:gip6666@localhost:1025/eureka
+    registry-fetch-interval-seconds: 10
+
+---
+spring:
+  profiles: prd
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://pig:gip6666@eureka:1025/eureka
