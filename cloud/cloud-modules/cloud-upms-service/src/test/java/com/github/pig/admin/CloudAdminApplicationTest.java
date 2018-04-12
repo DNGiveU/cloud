@@ -10,7 +10,8 @@ import com.ngiveu.cloud.admin.CloudAdminApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = CloudAdminApplication.class)
-public class PigAdminApplicationTest {
+public class CloudAdminApplicationTest {
+	
 	@Autowired
 	private StringEncryptor stringEncryptor;
 

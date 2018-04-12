@@ -1,0 +1,16 @@
+server:
+  port: 4050
+
+spring:
+  rabbitmq:
+    host: 192.169.0.200
+    port: 5672
+    username: guest
+    password: guest
+
+sms:
+  aliyun:
+    accessKey: accessKey
+    secretKey: secretKey
+    channels:
+      loginCodeChannel: SMS_34630023

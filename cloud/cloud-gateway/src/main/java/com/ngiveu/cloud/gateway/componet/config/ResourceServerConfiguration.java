@@ -68,7 +68,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     }
 
     /**
-     * 加密方式
+     * SpringSecurity加密方式
      * @return
      */
     @Bean

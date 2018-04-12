@@ -1,14 +1,15 @@
 package com.ngiveu.cloud.common.constant;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017-12-18
  */
 public interface SecurityConstants {
+	
     /**
      * 前缀
      */
-    String PIG_PREFIX = "pig_";
+    String CLOUD_PREFIX = "cloud_";
     /**
      * 用户信息头
      */
@@ -21,7 +22,7 @@ public interface SecurityConstants {
     /**
      * 项目的license
      */
-    String PIG_LICENSE = "made by pig";
+    String PIG_LICENSE = "made by gaz";
     /**
      * 基础角色
      */

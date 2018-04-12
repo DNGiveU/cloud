@@ -1,0 +1,76 @@
+# 加密配置
+# Spring Cloud Config 提供了统一的加解密方式，方便使用，但是如果应用配置没有走配置中心，那么加解密过滤是无效的；依赖JCE 对于低版本spring cloud的兼容性不好
+# jasypt 功能更为强大，支持的加密方式更多，但是如果多个微服务，需要每个服务模块引入依赖配置，较为麻烦；但是功能强大 、灵活。
+# jasypt-spring-boot-starter 
+# com.github.pig.admin.CloudAdminApplicationTest 使用 ENC(密文)
+jasypt:
+  encryptor:
+    password: lengleng
+
+server:
+  tomcat:
+    max-threads: 500 # Maximum amount of worker threads.
+    min-spare-threads: 50 # Minimum amount of worker threads
+
+spring:
+  redis:
+    remote: true        # cachecloud 获取
+    host: 192.168.0.200
+    port: 6379
+    password:
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+cache:
+  redis:
+    expiration: 3601
+
+# 负载均衡设置
+ribbon:
+  eager-load:
+    enabled: true
+    clients: pig-auth,pig-upms-service
+  Httpclient:
+    enable: false
+  OkHttp: # 使用okhttp进行网络请求
+    enable: true
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enable: true
+  httpclient:
+    enable: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000  
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+    
+# 监控短点配置
+management:
+  security:
+    enabled: false
+endpoints:
+  actuator:
+    enabled: true
+  shutdown:
+    enabled: false

@@ -1,7 +1,7 @@
 package com.ngiveu.cloud.common.constant;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/10/29
  */
 public interface CommonConstant {
@@ -18,7 +18,7 @@ public interface CommonConstant {
     /**
      * jwt签名
      */
-    String SIGN_KEY = "PIG";
+    String SIGN_KEY = "CLOUD";
     /**
      * 删除
      */

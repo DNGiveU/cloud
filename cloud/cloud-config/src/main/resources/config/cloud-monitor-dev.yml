@@ -1,0 +1,31 @@
+server:
+  port: 5001
+
+spring:
+  rabbitmq:
+    host: 192.168.0.200
+    port: 5672
+    username: guest
+    password: guest
+  # zipkin:
+  #     base-url: http://localhost:5002
+  # sleuth:
+  #   enabled: true
+  #   sampler:
+  #     percentage: 1
+  boot:
+    admin:
+      turbine:
+        location: cloud-monitor
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,turbine.stream
+
+turbine:
+    app-config: cloud-gateway #收集监控信息的服务名
+    combine-host-port: true
+    cluster-name-expression: new String('default') #集群名称
+
+# 服务下线,短信接受者
+mobiles:
+  users:
+    - 18280968850

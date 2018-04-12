@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/10/27
  * 认证服务器逻辑实现
  */
@@ -103,7 +103,7 @@ public class CloudAuthorizationConfig extends AuthorizationServerConfigurerAdapt
     @Bean
     public TokenStore redisTokenStore() {
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        tokenStore.setPrefix(SecurityConstants.PIG_PREFIX);
+        tokenStore.setPrefix(SecurityConstants.CLOUD_PREFIX);
         return tokenStore;
     }
 

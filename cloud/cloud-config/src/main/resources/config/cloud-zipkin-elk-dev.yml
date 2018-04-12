@@ -1,0 +1,19 @@
+server:
+  port: 5002
+
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: 192.168.0.200:5672
+      password: guest
+      username: guest
+      queue: zipkin
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      hosts: 192.168.0.200:5601
+      cluster: elasticsearch
+      index: zipkin
+      max-requests: 64
+      index-shards: 5
+      index-replicas: 1
