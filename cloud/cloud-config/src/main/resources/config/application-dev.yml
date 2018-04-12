@@ -3,6 +3,7 @@
 # jasypt 功能更为强大，支持的加密方式更多，但是如果多个微服务，需要每个服务模块引入依赖配置，较为麻烦；但是功能强大 、灵活。
 # jasypt-spring-boot-starter 
 # com.github.pig.admin.CloudAdminApplicationTest 使用 ENC(密文)
+
 jasypt:
   encryptor:
     password: lengleng
