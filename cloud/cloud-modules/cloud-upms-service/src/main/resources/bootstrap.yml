@@ -1,13 +1,13 @@
 spring:
   application:
-    name: pig-upms-service
+    name: cloud-upms-service
   profiles:
     active: dev
   cloud:
     config:
       fail-fast: true
       discovery:
-        service-id: pig-config-server
+        service-id: cloud-config-server
         enabled: true
       profile: ${spring.profiles.active}
       label: ${spring.profiles.active}
@@ -22,7 +22,7 @@ eureka:
     lease-expiration-duration-in-seconds: 20
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@localhost:1025/eureka
+      defaultZone: http://gaz:han19951226@localhost:1025/eureka
     registry-fetch-interval-seconds: 10
 
 ---
@@ -33,4 +33,4 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@eureka:1025/eureka
+      defaultZone: http://gaz:han19951226@eureka:1025/eureka

@@ -3,7 +3,7 @@
 <mapper namespace="com.github.pig.admin.mapper.SysRoleMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.github.pig.admin.model.entity.SysRole">
+	<resultMap id="BaseResultMap" type="com.ngiveu.cloud.admin.model.entity.SysRole">
 		<id column="role_id" property="roleId" />
 		<result column="role_name" property="roleName" />
 		<result column="role_code" property="roleCode" />
@@ -14,7 +14,7 @@
 	</resultMap>
 
 	<!--roleDto-->
-	<resultMap id="RoleDtoMap" type="com.github.pig.admin.model.dto.RoleDTO">
+	<resultMap id="RoleDtoMap" type="com.ngiveu.cloud.admin.model.dto.RoleDTO">
 		<id column="role_id" property="roleId" />
 		<result column="role_name" property="roleName" />
 		<result column="role_code" property="roleCode" />

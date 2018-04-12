@@ -3,7 +3,7 @@
 <mapper namespace="com.github.pig.admin.mapper.SysDeptRelationMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.github.pig.admin.model.entity.SysDeptRelation">
+	<resultMap id="BaseResultMap" type="com.ngiveu.cloud.admin.model.entity.SysDeptRelation">
 		<id column="ancestor" property="ancestor" />
 		<result column="descendant" property="descendant" />
 	</resultMap>

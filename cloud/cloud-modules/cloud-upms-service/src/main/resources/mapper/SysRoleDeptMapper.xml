@@ -3,7 +3,7 @@
 <mapper namespace="com.github.pig.admin.mapper.SysRoleDeptMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="com.github.pig.admin.model.entity.SysRoleDept">
+	<resultMap id="BaseResultMap" type="com.ngiveu.cloud.admin.model.entity.SysRoleDept">
 		<id column="id" property="id" />
 		<result column="role_id" property="roleId" />
 		<result column="dept_id" property="deptId" />

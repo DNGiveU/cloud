@@ -3,7 +3,7 @@
 <mapper namespace="com.github.pig.admin.mapper.SysDeptMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.github.pig.admin.model.entity.SysDept">
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.admin.model.entity.SysDept">
         <id column="dept_id" property="deptId"/>
         <result column="name" property="name"/>
         <result column="order_num" property="orderNum"/>
@@ -37,7 +37,7 @@
     </delete>
 
     <!--关联查询部门列表-->
-    <select id="selectDeptDtoList" resultType="com.github.pig.admin.model.entity.SysDept">
+    <select id="selectDeptDtoList" resultType="com.ngiveu.cloud.admin.model.entity.SysDept">
 		SELECT
 			t.*
 		FROM

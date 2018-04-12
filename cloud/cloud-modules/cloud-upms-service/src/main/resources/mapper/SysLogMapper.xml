@@ -3,7 +3,7 @@
 <mapper namespace="com.github.pig.admin.mapper.SysLogMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.github.pig.common.entity.SysLog">
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.common.entity.SysLog">
         <id column="id" property="id"/>
         <result column="type" property="type"/>
         <result column="title" property="title"/>
