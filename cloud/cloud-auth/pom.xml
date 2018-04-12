@@ -3,25 +3,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.pig</groupId>
-	<artifactId>pig-auth</artifactId>
-	<version>${pig.version}</version>
+	<artifactId>cloud-auth</artifactId>
 	<packaging>jar</packaging>
 
-	<name>pig-auth</name>
+	<name>cloud-auth</name>
 	<description>jwt 认证服务</description>
 
 	<parent>
-		<groupId>com.github</groupId>
-		<artifactId>pig</artifactId>
-		<version>${pig.version}</version>
+		<groupId>com.ngiveu</groupId>
+		<artifactId>cloud</artifactId>
+		<version>${cloud.version}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.pig</groupId>
-			<artifactId>pig-common</artifactId>
-			<version>${pig.version}</version>
+			<groupId>com.ngiveu</groupId>
+			<artifactId>cloud-common</artifactId>
+			<version>${cloud.version}</version>
 		</dependency>
 		<!--oauth2.0-->
 		<dependency>

@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cloud-visual</artifactId>
+    <packaging>pom</packaging>
+
+    <name>cloud-visual</name>
+    <description>图形化管理模块</description>
+
+    <parent>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud</artifactId>
+        <version>${cloud.version}</version>
+    </parent>
+
+    <modules>
+        <module>cloud-monitor</module>
+        <module>cloud-zipkin-elk</module>
+        <module>cloud-zipkin-db</module>
+        <!--<module>cloud-cache-cloud</module>-->
+    </modules>
+</project>

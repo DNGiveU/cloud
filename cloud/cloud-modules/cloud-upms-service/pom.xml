@@ -3,25 +3,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.pig</groupId>
-	<artifactId>pig-upms-service</artifactId>
-	<version>${pig.version}</version>
+	<artifactId>cloud-upms-service</artifactId>
 	<packaging>jar</packaging>
 
-	<name>pig-upms-service</name>
-	<description>pig-upms-service</description>
+	<name>cloud-upms-service</name>
+	<description>cloud-upms-service</description>
 
 	<parent>
-		<groupId>com.github.pig</groupId>
-		<artifactId>pig-modules</artifactId>
-		<version>${pig.version}</version>
+		<groupId>com.ngiveu</groupId>
+		<artifactId>cloud-modules</artifactId>
+		<version>${cloud.version}</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.pig</groupId>
-			<artifactId>pig-common</artifactId>
-			<version>${pig.version}</version>
+			<groupId>com.ngiveu</groupId>
+			<artifactId>cloud-common</artifactId>
+			<version>${cloud.version}</version>
 		</dependency>
 		<!--MySQL-->
 		<dependency>

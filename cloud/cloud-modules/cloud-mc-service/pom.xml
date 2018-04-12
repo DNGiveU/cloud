@@ -3,25 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-mc-service</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-mc-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>pig-mc-service</name>
+    <name>cloud-mc-service</name>
     <description>消息中心</description>
 
     <parent>
-        <groupId>com.github.pig</groupId>
-        <artifactId>pig-modules</artifactId>
-        <version>${pig.version}</version>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud-modules</artifactId>
+        <version>${cloud.version}</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.pig</groupId>
-            <artifactId>pig-common</artifactId>
-            <version>${pig.version}</version>
+            <groupId>com.ngiveu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>${cloud.version}</version>
         </dependency>
         <!--rabbitMQ-->
         <dependency>

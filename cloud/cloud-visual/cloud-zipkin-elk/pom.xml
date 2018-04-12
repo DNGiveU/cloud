@@ -3,25 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-zipkin-elk</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-zipkin-elk</artifactId>
     <packaging>jar</packaging>
 
-    <name>pig-zipkin-elk</name>
+    <name>cloud-zipkin-elk</name>
     <description>zipkin监控模块</description>
 
     <parent>
-        <groupId>com.github.pig</groupId>
-        <artifactId>pig-visual</artifactId>
-        <version>${pig.version}</version>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud-visual</artifactId>
+        <version>${cloud.version}</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.pig</groupId>
-            <artifactId>pig-common</artifactId>
-            <version>${pig.version}</version>
+            <groupId>com.ngiveu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>${cloud.version}</version>
         </dependency>
         <!--zipkin-->
         <dependency>

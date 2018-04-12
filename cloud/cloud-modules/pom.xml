@@ -1,18 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>pig</artifactId>
-        <groupId>com.github</groupId>
-        <version>${pig.version}</version>
+        <artifactId>cloud</artifactId>
+        <groupId>com.ngiveu</groupId>
+        <version>${cloud.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-modules</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-modules</artifactId>
     <packaging>pom</packaging>
 
-    <name>pig-modules</name>
+    <name>cloud-modules</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -20,10 +18,10 @@
     </properties>
 
     <modules>
-        <module>pig-daemon-service</module>
-        <module>pig-mc-service</module>
-        <module>pig-sso-client-demo</module>
-        <module>pig-upms-service</module>
+        <module>cloud-daemon-service</module>
+        <module>cloud-mc-service</module>
+        <module>cloud-sso-client-demo</module>
+        <module>cloud-upms-service</module>
     </modules>
 
 </project>

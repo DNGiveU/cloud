@@ -3,18 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-daemon-service</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-daemon-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>pig-daemon-service</name>
+    <name>cloud-daemon-service</name>
     <description>后台跑批定时任务模块</description>
 
     <parent>
-        <groupId>com.github.pig</groupId>
-        <artifactId>pig-modules</artifactId>
-        <version>${pig.version}</version>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud-modules</artifactId>
+        <version>${cloud.version}</version>
     </parent>
 
     <properties>
@@ -24,9 +22,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.pig</groupId>
-            <artifactId>pig-common</artifactId>
-            <version>${pig.version}</version>
+            <groupId>com.ngiveu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>${cloud.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.xjzrc.spring.boot</groupId>

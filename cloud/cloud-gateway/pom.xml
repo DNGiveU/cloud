@@ -3,25 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-gateway</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-gateway</artifactId>
     <packaging>jar</packaging>
 
-    <name>pig-gateway</name>
+    <name>cloud-gateway</name>
     <description>服务网关</description>
 
     <parent>
-        <groupId>com.github</groupId>
-        <artifactId>pig</artifactId>
-        <version>${pig.version}</version>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud</artifactId>
+        <version>${cloud.version}</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.pig</groupId>
-            <artifactId>pig-common</artifactId>
-            <version>${pig.version}</version>
+            <groupId>com.ngiveu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>${cloud.version}</version>
         </dependency>
         <!--zuul网关-->
         <dependency>

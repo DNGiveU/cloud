@@ -3,34 +3,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.pig</groupId>
-    <artifactId>pig-sso-client-demo</artifactId>
-    <version>${pig.version}</version>
+    <artifactId>cloud-config</artifactId>
     <packaging>jar</packaging>
 
-    <name>pig-sso-client-demo</name>
-    <description>单点登录客户端</description>
+    <name>cloud-config</name>
+    <description>配置中心</description>
 
     <parent>
-        <groupId>com.github.pig</groupId>
-        <artifactId>pig-modules</artifactId>
-        <version>${pig.version}</version>
+        <groupId>com.ngiveu</groupId>
+        <artifactId>cloud</artifactId>
+        <version>${cloud.version}</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
