@@ -3,23 +3,23 @@ server:
 
 spring:
   application:
-    name: pig-eureka-server
+    name: cloud-eureka-server
 
 security:
   basic:
     enabled: true # 启用身份认证
   user:
-    name: pig # 定义用户名
-    password: gip6666 # 定义密码
+    name: gaz # 定义注册服务用户名
+    password: han19951226 # 定义注册服务密码
 
 eureka:
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: false # 不获取服务列表到本地
+    register-with-eureka: false # 本服务不注册到注册中心. 高可用利用互相注册机制同步服务列表
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   instance:
     hostname: localhost
-  server:  #配置属性，但由于 Eureka 自我保护模式以及心跳周期长的原因，经常会遇到 Eureka Server 不剔除已关停的节点的问题
-    enable-self-preservation: false
+  server:  # 配置属性，但由于 Eureka 自我保护模式以及心跳周期长的原因，经常会遇到 Eureka Server 不剔除已关停的节点的问题
+    enable-self-preservation: false # 关闭自我保护
     eviction-interval-timer-in-ms: 5000

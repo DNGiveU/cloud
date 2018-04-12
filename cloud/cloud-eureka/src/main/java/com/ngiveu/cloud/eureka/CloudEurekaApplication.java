@@ -1,4 +1,4 @@
-package com.github.pig.eureka;
+package com.ngiveu.cloud.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +9,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @EnableEurekaServer
 @SpringBootApplication
-public class PigEurekaApplication {
+public class CloudEurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PigEurekaApplication.class, args);
+		SpringApplication.run(CloudEurekaApplication.class, args);
 	}
 }
