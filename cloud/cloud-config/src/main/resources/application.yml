@@ -3,14 +3,17 @@ server:
 
 spring:
   application:
-    name: pig-config-server
+    name: cloud-config-server
   profiles:
-    active: dev
+    active: dev # 配置文件本地化值为 native
   cloud:
     config:
       server:
+        # 配置文件本地化配置: server.native.search-locations: classpath:/config/ # 在resources/config下
         git:
-          uri: https://gitee.com/cqzqxq_lxh/pig-config.git
+          uri: https://gitee.com/DNGiveU/pig-config.git
+          username: DNGiveU
+          password: han19951226
 ---
 spring:
   profiles: dev
@@ -21,7 +24,7 @@ eureka:
     lease-expiration-duration-in-seconds: 20
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@localhost:1025/eureka
+      defaultZone: http://gaz:han19951226@localhost:1025/eureka
     registry-fetch-interval-seconds: 10
 
 ---
@@ -32,4 +35,4 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@eureka:1025/eureka
+      defaultZone: http://gaz:han19951226@eureka:1025/eureka
