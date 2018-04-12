@@ -3,7 +3,7 @@ package com.github.pig.gateway.componet.handler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.R;
-import com.ngiveu.cloud.common.util.exception.PigDeniedException;
+import com.ngiveu.cloud.common.util.exception.CloudDeniedException;
 
 import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class PigAccessDeniedHandler extends OAuth2AccessDeniedHandler {
         logger.info("授权失败，禁止访问");
         response.setCharacterEncoding(CommonConstant.UTF8);
         response.setContentType(CommonConstant.CONTENT_TYPE);
-        R<String> result = new R<>(new PigDeniedException("授权失败，禁止访问"));
+        R<String> result = new R<>(new CloudDeniedException("授权失败，禁止访问"));
         response.setStatus(HttpStatus.SC_FORBIDDEN);
         PrintWriter printWriter = response.getWriter();
         printWriter.append(objectMapper.writeValueAsString(result));
