@@ -7,9 +7,10 @@ import com.github.pig.admin.mapper.SysMenuMapper;
 import com.github.pig.admin.model.dto.MenuTree;
 import com.github.pig.admin.model.entity.SysMenu;
 import com.github.pig.admin.service.SysMenuService;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.util.Assert;
-import com.github.pig.common.vo.MenuVO;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.util.Assert;
+import com.ngiveu.cloud.common.vo.MenuVO;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;

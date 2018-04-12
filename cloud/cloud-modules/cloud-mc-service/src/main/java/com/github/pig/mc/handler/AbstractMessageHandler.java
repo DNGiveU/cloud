@@ -1,6 +1,6 @@
 package com.github.pig.mc.handler;
 
-import com.github.pig.common.util.template.MobileMsgTemplate;
+import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
 
 /**
  * @author lengleng

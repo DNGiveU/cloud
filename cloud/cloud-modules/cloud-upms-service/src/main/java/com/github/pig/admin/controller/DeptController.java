@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.github.pig.admin.model.dto.DeptTree;
 import com.github.pig.admin.model.entity.SysDept;
 import com.github.pig.admin.service.SysDeptService;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.web.BaseController;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.web.BaseController;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

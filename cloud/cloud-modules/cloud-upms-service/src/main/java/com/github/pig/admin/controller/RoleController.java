@@ -6,10 +6,11 @@ import com.github.pig.admin.model.dto.RoleDTO;
 import com.github.pig.admin.model.entity.SysRole;
 import com.github.pig.admin.service.SysRoleMenuService;
 import com.github.pig.admin.service.SysRoleService;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.util.Query;
-import com.github.pig.common.util.R;
-import com.github.pig.common.web.BaseController;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.util.Query;
+import com.ngiveu.cloud.common.util.R;
+import com.ngiveu.cloud.common.web.BaseController;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,9 @@
 package com.github.pig.admin.common.config;
 
-import com.github.pig.common.constant.SecurityConstants;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,9 +1,10 @@
 package com.github.pig.gateway.componet.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.util.R;
-import com.github.pig.common.util.exception.PigDeniedException;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.util.R;
+import com.ngiveu.cloud.common.util.exception.PigDeniedException;
+
 import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

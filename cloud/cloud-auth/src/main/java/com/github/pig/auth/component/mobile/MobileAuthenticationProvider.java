@@ -2,7 +2,8 @@ package com.github.pig.auth.component.mobile;
 
 import com.github.pig.auth.feign.UserService;
 import com.github.pig.auth.util.UserDetailsImpl;
-import com.github.pig.common.vo.UserVO;
+import com.ngiveu.cloud.common.vo.UserVO;
+
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

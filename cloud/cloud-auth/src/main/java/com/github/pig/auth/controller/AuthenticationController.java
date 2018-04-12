@@ -1,7 +1,8 @@
 package com.github.pig.auth.controller;
 
-import com.github.pig.common.constant.SecurityConstants;
-import com.github.pig.common.util.R;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
+import com.ngiveu.cloud.common.util.R;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;

@@ -1,10 +1,11 @@
 package com.github.pig.admin.common.listener;
 
 import com.github.pig.admin.service.SysLogService;
-import com.github.pig.common.constant.MqQueueConstant;
-import com.github.pig.common.entity.SysLog;
-import com.github.pig.common.util.UserUtils;
-import com.github.pig.common.vo.LogVO;
+import com.ngiveu.cloud.common.constant.MqQueueConstant;
+import com.ngiveu.cloud.common.entity.SysLog;
+import com.ngiveu.cloud.common.util.UserUtils;
+import com.ngiveu.cloud.common.vo.LogVO;
+
 import org.slf4j.MDC;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

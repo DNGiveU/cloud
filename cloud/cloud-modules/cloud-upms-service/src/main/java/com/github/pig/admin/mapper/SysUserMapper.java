@@ -2,9 +2,9 @@ package com.github.pig.admin.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.github.pig.admin.model.entity.SysUser;
-import com.github.pig.common.bean.interceptor.DataScope;
-import com.github.pig.common.util.Query;
-import com.github.pig.common.vo.UserVO;
+import com.ngiveu.cloud.common.bean.interceptor.DataScope;
+import com.ngiveu.cloud.common.util.Query;
+import com.ngiveu.cloud.common.vo.UserVO;
 
 import java.util.List;
 

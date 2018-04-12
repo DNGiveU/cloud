@@ -1,9 +1,9 @@
 package com.github.pig.monitor.filter;
 
-import com.github.pig.common.constant.MqQueueConstant;
-import com.github.pig.common.constant.enums.EnumSmsChannel;
-import com.github.pig.common.util.template.MobileMsgTemplate;
 import com.github.pig.monitor.config.MonitorMobilePropertiesConfig;
+import com.ngiveu.cloud.common.constant.MqQueueConstant;
+import com.ngiveu.cloud.common.constant.enums.EnumSmsChannel;
+import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
 import com.xiaoleilu.hutool.collection.CollectionUtil;
 import com.xiaoleilu.hutool.date.DateUtil;
 import de.codecentric.boot.admin.event.ClientApplicationEvent;

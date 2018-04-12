@@ -1,8 +1,9 @@
 package com.github.pig.common.util;
 
-import com.github.pig.common.constant.CommonConstant;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
+
+import com.ngiveu.cloud.common.constant.CommonConstant;
 
 import java.util.Optional;
 

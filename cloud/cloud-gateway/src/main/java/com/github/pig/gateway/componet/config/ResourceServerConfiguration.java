@@ -1,8 +1,9 @@
 package com.github.pig.gateway.componet.config;
 
-import com.github.pig.common.bean.config.FilterUrlsPropertiesConfig;
 import com.github.pig.gateway.componet.filter.ValidateCodeFilter;
 import com.github.pig.gateway.componet.handler.PigAccessDeniedHandler;
+import com.ngiveu.cloud.common.bean.config.FilterUrlsPropertiesConfig;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;

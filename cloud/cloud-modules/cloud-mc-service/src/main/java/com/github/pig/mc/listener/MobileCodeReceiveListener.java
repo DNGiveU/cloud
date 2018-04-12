@@ -1,8 +1,9 @@
 package com.github.pig.mc.listener;
 
-import com.github.pig.common.constant.MqQueueConstant;
-import com.github.pig.common.util.template.MobileMsgTemplate;
 import com.github.pig.mc.handler.SmsMessageHandler;
+import com.ngiveu.cloud.common.constant.MqQueueConstant;
+import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

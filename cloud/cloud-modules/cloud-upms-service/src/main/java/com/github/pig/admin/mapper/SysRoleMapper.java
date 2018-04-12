@@ -2,7 +2,7 @@ package com.github.pig.admin.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.github.pig.admin.model.entity.SysRole;
-import com.github.pig.common.util.Query;
+import com.ngiveu.cloud.common.util.Query;
 
 import java.util.List;
 import java.util.Map;

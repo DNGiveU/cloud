@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.github.pig.admin.model.dto.RoleDTO;
 import com.github.pig.admin.model.entity.SysRole;
-import com.github.pig.common.util.Query;
+import com.ngiveu.cloud.common.util.Query;
 
 import java.util.List;
 

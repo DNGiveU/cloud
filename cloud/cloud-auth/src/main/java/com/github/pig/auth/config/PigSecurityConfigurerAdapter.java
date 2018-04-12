@@ -1,7 +1,8 @@
 package com.github.pig.auth.config;
 
 import com.github.pig.auth.component.mobile.MobileSecurityConfigurer;
-import com.github.pig.common.bean.config.FilterUrlsPropertiesConfig;
+import com.ngiveu.cloud.common.bean.config.FilterUrlsPropertiesConfig;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

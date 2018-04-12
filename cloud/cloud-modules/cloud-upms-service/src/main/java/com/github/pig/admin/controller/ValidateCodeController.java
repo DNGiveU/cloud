@@ -1,10 +1,11 @@
 package com.github.pig.admin.controller;
 
 import com.github.pig.admin.service.SysUserService;
-import com.github.pig.common.constant.SecurityConstants;
-import com.github.pig.common.util.Assert;
-import com.github.pig.common.util.R;
 import com.google.code.kaptcha.Producer;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
+import com.ngiveu.cloud.common.util.Assert;
+import com.ngiveu.cloud.common.util.R;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -3,9 +3,10 @@ package com.github.pig.admin.service.impl;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.github.pig.admin.mapper.SysLogMapper;
 import com.github.pig.admin.service.SysLogService;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.entity.SysLog;
-import com.github.pig.common.util.Assert;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.entity.SysLog;
+import com.ngiveu.cloud.common.util.Assert;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

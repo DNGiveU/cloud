@@ -2,7 +2,8 @@ package com.github.pig.auth.serivce;
 
 import com.github.pig.auth.feign.UserService;
 import com.github.pig.auth.util.UserDetailsImpl;
-import com.github.pig.common.vo.UserVO;
+import com.ngiveu.cloud.common.vo.UserVO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

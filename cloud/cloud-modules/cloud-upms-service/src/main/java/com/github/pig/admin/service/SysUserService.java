@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.service.IService;
 import com.github.pig.admin.model.dto.UserDTO;
 import com.github.pig.admin.model.dto.UserInfo;
 import com.github.pig.admin.model.entity.SysUser;
-import com.github.pig.common.util.Query;
-import com.github.pig.common.util.R;
-import com.github.pig.common.vo.UserVO;
+import com.ngiveu.cloud.common.util.Query;
+import com.ngiveu.cloud.common.util.R;
+import com.ngiveu.cloud.common.vo.UserVO;
 
 /**
  * @author lengleng

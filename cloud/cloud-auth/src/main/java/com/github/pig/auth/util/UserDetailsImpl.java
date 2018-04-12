@@ -1,9 +1,10 @@
 package com.github.pig.auth.util;
 
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.constant.SecurityConstants;
-import com.github.pig.common.vo.SysRole;
-import com.github.pig.common.vo.UserVO;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
+import com.ngiveu.cloud.common.vo.SysRole;
+import com.ngiveu.cloud.common.vo.UserVO;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

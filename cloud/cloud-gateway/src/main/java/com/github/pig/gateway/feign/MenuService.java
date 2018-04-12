@@ -1,7 +1,8 @@
 package com.github.pig.gateway.feign;
 
-import com.github.pig.common.vo.MenuVO;
 import com.github.pig.gateway.feign.fallback.MenuServiceFallbackImpl;
+import com.ngiveu.cloud.common.vo.MenuVO;
+
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

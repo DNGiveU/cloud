@@ -1,7 +1,8 @@
 package com.github.pig.gateway.feign.fallback;
 
-import com.github.pig.common.vo.UserVO;
 import com.github.pig.gateway.feign.UserService;
+import com.ngiveu.cloud.common.vo.UserVO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

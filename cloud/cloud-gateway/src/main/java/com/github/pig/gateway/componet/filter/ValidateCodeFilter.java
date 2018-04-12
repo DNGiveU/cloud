@@ -1,10 +1,11 @@
 package com.github.pig.gateway.componet.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.constant.SecurityConstants;
-import com.github.pig.common.util.R;
-import com.github.pig.common.util.exception.ValidateCodeException;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
+import com.ngiveu.cloud.common.util.R;
+import com.ngiveu.cloud.common.util.exception.ValidateCodeException;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

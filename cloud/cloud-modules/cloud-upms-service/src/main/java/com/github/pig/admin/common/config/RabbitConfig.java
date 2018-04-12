@@ -1,9 +1,10 @@
 package com.github.pig.admin.common.config;
 
-import com.github.pig.common.constant.MqQueueConstant;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.ngiveu.cloud.common.constant.MqQueueConstant;
 
 /**
  * @author lengleng

@@ -1,7 +1,5 @@
 package com.github.pig.auth.config;
 
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +20,9 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
 
 import java.util.Arrays;
 import java.util.HashMap;

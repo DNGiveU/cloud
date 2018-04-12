@@ -1,9 +1,10 @@
 package com.github.pig.auth.config;
 
-import com.github.pig.common.constant.SecurityConstants;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+
+import com.ngiveu.cloud.common.constant.SecurityConstants;
 
 import java.util.Map;
 

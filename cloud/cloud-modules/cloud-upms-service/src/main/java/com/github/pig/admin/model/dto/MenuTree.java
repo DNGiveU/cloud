@@ -1,6 +1,7 @@
 package com.github.pig.admin.model.dto;
 
-import com.github.pig.common.vo.MenuVO;
+import com.ngiveu.cloud.common.vo.MenuVO;
+
 import lombok.Data;
 
 /**

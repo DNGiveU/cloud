@@ -9,7 +9,8 @@ import com.github.pig.admin.model.dto.DeptTree;
 import com.github.pig.admin.model.entity.SysDept;
 import com.github.pig.admin.model.entity.SysDeptRelation;
 import com.github.pig.admin.service.SysDeptService;
-import com.github.pig.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

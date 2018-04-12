@@ -1,9 +1,9 @@
 package com.github.pig.gateway.service.impl;
 
 import com.baomidou.mybatisplus.toolkit.StringUtils;
-import com.github.pig.common.vo.MenuVO;
 import com.github.pig.gateway.feign.MenuService;
 import com.github.pig.gateway.service.PermissionService;
+import com.ngiveu.cloud.common.vo.MenuVO;
 import com.xiaoleilu.hutool.collection.CollectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

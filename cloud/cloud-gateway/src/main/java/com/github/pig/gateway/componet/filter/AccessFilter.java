@@ -1,8 +1,8 @@
 package com.github.pig.gateway.componet.filter;
 
-import com.github.pig.common.constant.SecurityConstants;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.ngiveu.cloud.common.constant.SecurityConstants;
 import com.xiaoleilu.hutool.collection.CollectionUtil;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.security.core.Authentication;

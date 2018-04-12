@@ -1,11 +1,13 @@
 package com.github.pig.gateway.componet.config;
 
-import com.github.pig.common.constant.ServiceNameConstant;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+
+import com.ngiveu.cloud.common.constant.ServiceNameConstant;
+
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 

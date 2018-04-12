@@ -1,12 +1,12 @@
 package com.github.pig.gateway.service.impl;
 
-import com.github.pig.common.constant.CommonConstant;
-import com.github.pig.common.constant.MqQueueConstant;
-import com.github.pig.common.entity.SysLog;
-import com.github.pig.common.util.UserUtils;
-import com.github.pig.common.vo.LogVO;
 import com.github.pig.gateway.service.LogSendService;
 import com.netflix.zuul.context.RequestContext;
+import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.MqQueueConstant;
+import com.ngiveu.cloud.common.entity.SysLog;
+import com.ngiveu.cloud.common.util.UserUtils;
+import com.ngiveu.cloud.common.vo.LogVO;
 import com.xiaoleilu.hutool.http.HttpUtil;
 import com.xiaoleilu.hutool.io.IoUtil;
 import com.xiaoleilu.hutool.util.URLUtil;
