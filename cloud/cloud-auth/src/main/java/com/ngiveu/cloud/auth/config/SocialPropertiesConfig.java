@@ -1,4 +1,4 @@
-package com.github.pig.auth.config;
+package com.ngiveu.cloud.auth.config;
 
 import lombok.Data;
 

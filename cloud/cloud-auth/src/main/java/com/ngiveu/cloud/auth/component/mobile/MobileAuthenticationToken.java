@@ -1,4 +1,4 @@
-package com.github.pig.auth.util;
+package com.ngiveu.cloud.auth.component.mobile;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

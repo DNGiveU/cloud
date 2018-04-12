@@ -1,7 +1,7 @@
-package com.github.pig.auth.component.mobile;
+package com.ngiveu.cloud.auth.component.mobile;
 
-import com.github.pig.auth.feign.UserService;
-import com.github.pig.auth.util.UserDetailsImpl;
+import com.ngiveu.cloud.auth.feign.UserService;
+import com.ngiveu.cloud.auth.util.UserDetailsImpl;
 import com.ngiveu.cloud.common.vo.UserVO;
 
 import org.springframework.security.authentication.AuthenticationProvider;

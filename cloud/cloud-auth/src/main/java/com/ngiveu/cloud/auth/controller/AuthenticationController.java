@@ -1,4 +1,4 @@
-package com.github.pig.auth.controller;
+package com.ngiveu.cloud.auth.controller;
 
 import com.ngiveu.cloud.common.constant.SecurityConstants;
 import com.ngiveu.cloud.common.util.R;

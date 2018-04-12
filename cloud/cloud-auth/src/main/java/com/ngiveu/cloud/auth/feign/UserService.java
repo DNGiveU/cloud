@@ -1,6 +1,6 @@
-package com.github.pig.auth.feign;
+package com.ngiveu.cloud.auth.feign;
 
-import com.github.pig.auth.feign.fallback.UserServiceFallbackImpl;
+import com.ngiveu.cloud.auth.feign.fallback.UserServiceFallbackImpl;
 import com.ngiveu.cloud.common.vo.UserVO;
 
 import org.springframework.cloud.netflix.feign.FeignClient;

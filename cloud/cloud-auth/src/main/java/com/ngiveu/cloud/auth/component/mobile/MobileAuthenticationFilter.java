@@ -1,4 +1,4 @@
-package com.github.pig.auth.component.mobile;
+package com.ngiveu.cloud.auth.component.mobile;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationServiceException;

@@ -1,6 +1,6 @@
-package com.github.pig.auth.config;
+package com.ngiveu.cloud.auth.config;
 
-import com.github.pig.auth.component.mobile.MobileSecurityConfigurer;
+import com.ngiveu.cloud.auth.component.mobile.MobileSecurityConfigurer;
 import com.ngiveu.cloud.common.bean.config.FilterUrlsPropertiesConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
  */
 @Configuration
 @EnableWebSecurity
-public class PigSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+public class CloudSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
     @Autowired
     private FilterUrlsPropertiesConfig filterUrlsPropertiesConfig;
     @Autowired

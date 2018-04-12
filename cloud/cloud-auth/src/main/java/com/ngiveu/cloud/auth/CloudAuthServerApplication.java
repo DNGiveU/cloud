@@ -1,4 +1,4 @@
-package com.github.pig.auth;
+package com.ngiveu.cloud.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +16,10 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @EnableFeignClients
 @ComponentScan(basePackages = {"com.github.pig.auth", "com.github.pig.common.bean"})
-public class PigAuthServerApplication {
+public class CloudAuthServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PigAuthServerApplication.class, args);
+        SpringApplication.run(CloudAuthServerApplication.class, args);
     }
 
 }

@@ -1,6 +1,6 @@
-package com.github.pig.auth.feign.fallback;
+package com.ngiveu.cloud.auth.feign.fallback;
 
-import com.github.pig.auth.feign.UserService;
+import com.ngiveu.cloud.auth.feign.UserService;
 import com.ngiveu.cloud.common.vo.UserVO;
 
 import org.slf4j.Logger;

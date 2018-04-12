@@ -1,4 +1,4 @@
-package com.github.pig.auth.component.mobile;
+package com.ngiveu.cloud.auth.component.mobile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;

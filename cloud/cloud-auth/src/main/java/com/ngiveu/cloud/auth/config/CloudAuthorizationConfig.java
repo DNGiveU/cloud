@@ -1,4 +1,4 @@
-package com.github.pig.auth.config;
+package com.ngiveu.cloud.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +37,7 @@ import java.util.Map;
 @Configuration
 @Order(Integer.MIN_VALUE)
 @EnableAuthorizationServer
-public class PigAuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+public class CloudAuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthServerConfig authServerConfig;
@@ -91,7 +91,7 @@ public class PigAuthorizationConfig extends AuthorizationServerConfigurerAdapter
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        PigJwtAccessTokenConverter jwtAccessTokenConverter = new PigJwtAccessTokenConverter();
+        CloudJwtAccessTokenConverter jwtAccessTokenConverter = new CloudJwtAccessTokenConverter();
         jwtAccessTokenConverter.setSigningKey(CommonConstant.SIGN_KEY);
         return jwtAccessTokenConverter;
     }

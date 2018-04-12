@@ -6,6 +6,7 @@ target/
 *.tar
 *.tar.gz
 .factorypath
+.springBeans
 
 # eclipse ignore
 .settings/

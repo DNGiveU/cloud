@@ -1,4 +1,4 @@
-package com.github.pig.auth.config;
+package com.ngiveu.cloud.auth.config;
 
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -13,7 +13,7 @@ import java.util.Map;
  * @date 2018/4/7
  * token 声明版权
  */
-public class PigJwtAccessTokenConverter extends JwtAccessTokenConverter {
+public class CloudJwtAccessTokenConverter extends JwtAccessTokenConverter {
     @Override
     public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
         Map<String, Object> representation = (Map<String, Object>) super.convertAccessToken(token, authentication);
