@@ -1,4 +1,4 @@
-package com.github.pig.sso.config;
+package com.ngiveu.cloud.sso.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -2,7 +2,7 @@ server:
   port: 4040
   context-path: /sso1
 
-#监控短点配置
+# 监控短点配置
 management:
   security:
     enabled: false
@@ -12,11 +12,12 @@ endpoints:
   shutdown:
     enabled: false
 
+# org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter
 security:
   oauth2:
     client:
-      client-id: pig
-      client-secret: pig
+      client-id: cloud  # 使用oauth认证机制时设置的授权 头信息Authorization=Bearer base64(client-id:client-secret)
+      client-secret: gaz
       user-authorization-uri: http://localhost:3000/oauth/authorize
       access-token-uri: http://localhost:3000/oauth/token
       scope: server
@@ -26,13 +27,13 @@ security:
 
 spring:
   application:
-    name: pig-sso-client-demo
+    name: cloud-sso-client-demo
   profiles:
     active: dev
   redis:
-    remote: true        #是否是cachecloud 获取
-    host: 106.14.69.75
-    port: 6381
+    remote: true        # 是否是cachecloud 获取
+    host: 192.168.0.200
+    port: 6379
     password:
 
 logging:
@@ -47,7 +48,7 @@ eureka:
     lease-expiration-duration-in-seconds: 20
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@localhost:1025/eureka
+      defaultZone: http://gaz:han19951226@localhost:1025/eureka
 
 ---
 spring:
@@ -57,4 +58,4 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://pig:gip6666@eureka:1025/eureka
+      defaultZone: http://gaz:han19951226@eureka:1025/eureka
