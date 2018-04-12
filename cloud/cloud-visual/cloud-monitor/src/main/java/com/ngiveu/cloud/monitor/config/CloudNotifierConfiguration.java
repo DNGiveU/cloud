@@ -1,6 +1,5 @@
-package com.github.pig.monitor.config;
+package com.ngiveu.cloud.monitor.config;
 
-import com.github.pig.monitor.filter.MobileNotifier;
 import de.codecentric.boot.admin.notify.RemindingNotifier;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+
+import com.ngiveu.cloud.monitor.filter.MobileNotifier;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Configuration
 @EnableScheduling
-public class PigNotifierConfiguration {
+public class CloudNotifierConfiguration {
     @Autowired
     private RabbitTemplate rabbitTemplate;
     @Autowired

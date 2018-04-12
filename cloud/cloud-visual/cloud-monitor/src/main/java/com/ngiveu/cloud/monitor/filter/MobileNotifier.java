@@ -1,9 +1,9 @@
-package com.github.pig.monitor.filter;
+package com.ngiveu.cloud.monitor.filter;
 
-import com.github.pig.monitor.config.MonitorMobilePropertiesConfig;
 import com.ngiveu.cloud.common.constant.MqQueueConstant;
 import com.ngiveu.cloud.common.constant.enums.EnumSmsChannel;
 import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
+import com.ngiveu.cloud.monitor.config.MonitorMobilePropertiesConfig;
 import com.xiaoleilu.hutool.collection.CollectionUtil;
 import com.xiaoleilu.hutool.date.DateUtil;
 import de.codecentric.boot.admin.event.ClientApplicationEvent;

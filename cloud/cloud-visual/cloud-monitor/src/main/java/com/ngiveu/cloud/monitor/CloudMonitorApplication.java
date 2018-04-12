@@ -1,4 +1,4 @@
-package com.github.pig.monitor;
+package com.ngiveu.cloud.monitor;
 
 import de.codecentric.boot.admin.config.EnableAdminServer;
 import de.codecentric.boot.admin.notify.LoggingNotifier;
@@ -25,10 +25,10 @@ import java.util.concurrent.TimeUnit;
 @EnableTurbine
 @EnableDiscoveryClient
 @SpringBootApplication
-public class PigMonitorApplication {
+public class CloudMonitorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PigMonitorApplication.class, args);
+        SpringApplication.run(CloudMonitorApplication.class, args);
     }
 
     @Configuration
