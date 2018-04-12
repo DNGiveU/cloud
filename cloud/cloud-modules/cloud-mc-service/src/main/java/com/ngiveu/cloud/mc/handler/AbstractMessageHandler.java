@@ -1,4 +1,4 @@
-package com.github.pig.mc.handler;
+package com.ngiveu.cloud.mc.handler;
 
 import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
 

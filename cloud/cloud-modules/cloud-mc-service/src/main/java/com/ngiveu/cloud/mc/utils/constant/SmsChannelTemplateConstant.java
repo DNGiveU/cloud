@@ -1,4 +1,4 @@
-package com.github.pig.mc.utils.constant;
+package com.ngiveu.cloud.mc.utils.constant;
 
 /**
  * @author lengleng

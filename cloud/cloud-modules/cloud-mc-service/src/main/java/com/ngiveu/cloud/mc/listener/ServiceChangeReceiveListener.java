@@ -1,4 +1,4 @@
-package com.github.pig.mc.listener;
+package com.ngiveu.cloud.mc.listener;
 
 import com.ngiveu.cloud.common.constant.MqQueueConstant;
 import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;

@@ -1,12 +1,12 @@
-package com.github.pig.mc.handler;
+package com.ngiveu.cloud.mc.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.pig.mc.config.SmsAliyunPropertiesConfig;
-import com.github.pig.mc.utils.constant.SmsChannelTemplateConstant;
-import com.github.pig.mc.utils.sms.EnumSmsChannelTemplate;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.Assert;
 import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
+import com.ngiveu.cloud.mc.config.SmsAliyunPropertiesConfig;
+import com.ngiveu.cloud.mc.utils.constant.SmsChannelTemplateConstant;
+import com.ngiveu.cloud.mc.utils.sms.EnumSmsChannelTemplate;
 import com.taobao.api.DefaultTaobaoClient;
 import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;

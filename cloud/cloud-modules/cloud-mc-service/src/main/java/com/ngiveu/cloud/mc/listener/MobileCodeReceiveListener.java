@@ -1,8 +1,8 @@
-package com.github.pig.mc.listener;
+package com.ngiveu.cloud.mc.listener;
 
-import com.github.pig.mc.handler.SmsMessageHandler;
 import com.ngiveu.cloud.common.constant.MqQueueConstant;
 import com.ngiveu.cloud.common.util.template.MobileMsgTemplate;
+import com.ngiveu.cloud.mc.handler.SmsMessageHandler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

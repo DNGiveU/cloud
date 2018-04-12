@@ -1,4 +1,4 @@
-package com.github.pig.mc.utils.sms;
+package com.ngiveu.cloud.mc.utils.sms;
 
 /**
  * @author lengleng

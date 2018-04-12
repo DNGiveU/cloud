@@ -1,4 +1,4 @@
-package com.github.pig.mc.config;
+package com.ngiveu.cloud.mc.config;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
