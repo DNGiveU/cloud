@@ -1,4 +1,4 @@
-package com.github.pig.daemon.job;
+package com.ngiveu.cloud.daemon.job;
 
 import com.dangdang.ddframe.job.api.ShardingContext;
 import com.dangdang.ddframe.job.api.simple.SimpleJob;
@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
         startedTimeoutMilliseconds = 5000L,
         completedTimeoutMilliseconds = 10000L,
         eventTraceRdbDataSource = "dataSource")
-public class PigSimpleJob implements SimpleJob {
+public class DemoSimpleJob implements SimpleJob {
     /**
      * 业务执行逻辑
      *
@@ -24,6 +24,6 @@ public class PigSimpleJob implements SimpleJob {
      */
     @Override
     public void execute(ShardingContext shardingContext) {
-        log.info("shardingContext:{}", shardingContext);
+        log.info("--------------");
     }
 }
