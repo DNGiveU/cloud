@@ -50,10 +50,10 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Pig Swagger API ")
-                .description("https://gitee.com/log4j/pig/wikis")
-                .termsOfServiceUrl("https://gitee.com/log4j/pig")
-                .contact(new Contact("冷冷","https://gitee.com/log4j/pig","wangiegie@gmail.com"))
+                .title("Cloud Swagger API ")
+                .description("https://www.baidu.com")
+                .termsOfServiceUrl("https://github.com/DNGiveU/cloud")
+                .contact(new Contact("gaz","https://github.com/DNGiveU/cloud","443175598@gmail.com"))
                 .version("1.0")
                 .build();
     }

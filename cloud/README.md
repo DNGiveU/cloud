@@ -1,12 +1,3 @@
-<h1 align="center"><font color="red" face="STCAIYUN">需要有Spring Boot和Spring Cloud基础！！</font></h1>  
-<h1 align="center"><font color="red" face="STCAIYUN">需要有Spring Boot和Spring Cloud基础！！</font></h1>  
-<h1 align="center"><font color="red" face="STCAIYUN">需要有Spring Boot和Spring Cloud基础！！</font></h1>  
-
-<br/>  
-<hr />  
-<br/>  
-<br/> 
-<p align="center"><img src="doc/images/logo.jpg"></p>
 <p align="center">
  <img src="https://img.shields.io/circleci/project/vuejs/vue/dev.svg" alt="Build Status">
   <img src="https://img.shields.io/badge/Spring%20Cloud-Edgware-blue.svg" alt="Coverage Status">
@@ -15,44 +6,27 @@
   <img src="https://img.shields.io/npm/l/vue.svg" alt="License">
 </p>
 
-<h2 align="center">Supporting pig group</h2>   
+<h2 align="center">Supporting gaz</h2>  
 
-### 前端解决方案
-https://gitee.com/smallweigit/avue
-
- ### 视频教程
-https://www.bilibili.com/video/av20229859/
-
-### 使用文档
-[pig开发文档V1.0](https://www.kancloud.cn/lengleng/pig-guide/550709)
-
-
-### 分支介绍
-分支 | 介绍
----|---
-master | 稳定版本，推荐使用  
-dev | 开发分支，bug修复分支
-local | 配置中心本地化，开发使用不建议生产
-redis | 提供cachecloud的整合方案
- 
- ### now
+### 项目结构
 ``` lua
-pig
-├── pig-ui -- element-vue-admin实现[9528]
-├── pig-auth -- 授权服务提供[3000]
-├── pig-common -- 系统公共模块 
-├── pig-config -- 配置中心[4001]
-├── pig-eureka -- 服务注册与发现[1025]
-├── pig-gateway -- ZUUL网关[9999]
-├── pig-modules -- 微服务模块
-├    ├── pig-daemon-service -- 分布式调度中心[4060]
-├    ├── pig-mc-service -- 消息中心[4050]
-├    ├── pig-sso-client-demo -- 单点登录客户端示例[4040]
-├    └── pig-upms-service -- 权限管理提供[4000]
-└── pig-visual  -- 图形化模块 
-     ├── pig-monitor -- 服务状态监控、turbine [5001]
-     ├── pig-zipkin-elk -- zipkin、ELK监控[5002、5601]
-     └── pig-cache-cloud -- 缓存管理、统一监控[5005]
+cloud
+├── cloud-ui -- element-vue-admin实现[9528]
+├── cloud-auth -- 授权服务提供[3000]
+├── cloud-common -- 系统公共模块 
+├── cloud-config -- 配置中心[4001]
+├── cloud-eureka -- 服务注册与发现[1025]
+├── cloud-gateway -- ZUUL网关[9999]
+├── cloud-modules -- 微服务模块
+├    ├── cloud-daemon-service -- 分布式调度中心[4060]
+├    ├── cloud-mc-service -- 消息中心[4050]
+├    ├── cloud-sso-client-demo -- 单点登录客户端示例[4040]
+├    ├── cloud-upms-service -- 权限管理提供[4000]
+├    └── cloud-tabe-service -- 博客服务[9001]
+└── cloud-visual  -- 图形化模块 
+     ├── cloud-monitor -- 服务状态监控、turbine [5001]
+     ├── cloud-zipkin-elk -- zipkin、ELK监控[5002、5601]
+     └── cloud-cache-cloud -- 缓存管理、统一监控[5005]
 ```
 ###  已完成功能
 - 完善登录：账号密码模式、短信验证码模式、社交账号模式均整合Spring security oAuth
@@ -74,25 +48,28 @@ pig
 - 服务监控: Spring Boot Admin
 - 分布式任务调度： 基于elastic-job的分布式文件系统，zookeeper做调度中心
 - zipkin链路追踪： 数据保存ELK，图形化展示
-- pinpoint链路追踪： 数据保存hbase，图形化展示
+- pinpoint链路追踪： 数据保存hbase，图形化展示 
 
-欢迎加入交流群，互相学习  
-一键加群：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=5zWEvg5"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-![image](http://oss.wjg95.cn/pig_qq_qun.png)
+### 配置介绍
+```lua
+默认账号：admin 密码：123456
+CacheCloud管理台账号:admin 密码:admin
+mysql: 127.0.0.1:3306
+reeis: 127.0.0.1:6379
+rabbitmq: 192.168.0.200:15672
+zookeeper: 192.168.0.200:2181
+elasticsearch: 192.168.0.200:5601 [index=zipkin]
 
-![image](doc/images/1.png)
-![image](doc/images/2.png)
-![image](doc/images/3.png)
-![image](doc/images/4.png)
-![image](doc/images/5.png)
-![image](doc/images/6.png)
-![image](doc/images/7.png)
-![image](doc/images/8.png)
-![image](doc/images/9.png)
-![image](doc/images/10.png)
-![image](doc/images/11.png)
-![image](doc/images/12.png)
-![image](doc/images/13.png)
-![image](doc/images/14.png)
+建议启动参数:
+cloud-eureka启动 -Xmx350m -Xms250m
+```
 
+### 测试请求
 
+```shell
+# 认证 cGlnOnBpZw== 为client-id:client-secret的base64密文 grant_type为oauth密码模式 scope为server
+curl -H "Authorization:Basic cGlnOnBpZw==" -d "grant_type=password&scope=server&username=admin&password=123456" http://localhost:9999/auth/oauth/token
+
+# 请求数据 Authorization头信息中Bearer后面跟的是认证之后返回的token
+curl -H "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDk1NzA0NjMsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianRpIjoiZWMwZmJhMjYtMGJkZS00YjY2LThhZTQtZGRmYTNiMzkxZGM5IiwiY2xpZW50X2lkIjoicGlnIiwic2NvcGUiOlsic2VydmVyIl19.ZoSU_4NhdolnV6ZsNaSXITC_pewUDiaqZPLoESu9f9s" http://localhost:9999/admin/user/info
+```

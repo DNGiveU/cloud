@@ -24,17 +24,17 @@ zuul:
     connect-timeout-millis: 30000
     socket-timeout-millis: 30000
   routes:
-    pig-auth:
+    cloud-auth:
       path: /auth/**
       serviceId: cloud-auth
       stripPrefix: true
       sensitiveHeaders:
-    pig-upms-service:
+    cloud-upms-service:
       path: /admin/**
       serviceId: cloud-upms-service
       stripPrefix: true
       sensitiveHeaders:
-    pig-tabe-service:
+    cloud-tabe-service:
       path: /tabe/**
       serviceId: cloud-tabe-service
       stripPrefix: true
@@ -45,7 +45,7 @@ zuul:
     repository: REDIS 
     behind-proxy: true
     policies:
-      pig-upms-service:
+      cloud-upms-service:
         limit: 100
         quota: 100
         refresh-interval: 3
@@ -62,7 +62,7 @@ security:
     resource:
       loadBalanced: true
       token-info-uri: ${security.auth.server}/oauth/check-token
-      service-id: pig-gateway
+      service-id: cloud-gateway
       jwt:
          key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
 

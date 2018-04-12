@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @ElasticJobConfig(cron = "0/2 * * * * ?", shardingTotalCount = 3,
-        shardingItemParameters = "0=pig1,1=pig2,2=pig3",
+        shardingItemParameters = "0=cloud1,1=cloud2,2=cloud3",
         startedTimeoutMilliseconds = 5000L,
         completedTimeoutMilliseconds = 10000L,
         eventTraceRdbDataSource = "dataSource")

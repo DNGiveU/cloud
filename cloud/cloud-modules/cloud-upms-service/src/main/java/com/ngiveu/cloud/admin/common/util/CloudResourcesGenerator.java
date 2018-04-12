@@ -48,20 +48,20 @@ public class CloudResourcesGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("lengleng");
-        dsc.setUrl("jdbc:mysql://106.14.69.75:3309/pig?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/cloud?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
-        strategy.setSuperControllerClass("com.github.pig.common.web.BaseController");
+        strategy.setSuperControllerClass("com.ngiveu.cloud.common.web.BaseController");
         // 表名生成策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
         mpg.setStrategy(strategy);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.github.pig.admin");
+        pc.setParent("com.ngiveu.cloud.admin");
         pc.setController("controller");
         mpg.setPackageInfo(pc);
 

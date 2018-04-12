@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/12/15
  * Controller 增强
  */
@@ -29,13 +29,14 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class ControllerAop {
+	
     private static final Logger logger = LoggerFactory.getLogger(ControllerAop.class);
+    
     @Autowired
     private CacheManager cacheManager;
 
-    @Pointcut("execution(public com.github.pig.common.util.R *(..))")
-    public void pointCutR() {
-    }
+    @Pointcut("execution(public com.ngiveu.cloud.common.util.R *(..))")
+    public void pointCutR() {}
 
     /**
      * 拦截器具体实现
@@ -64,6 +65,13 @@ public class ControllerAop {
         return methodHandler(pjp);
     }
 
+    /**
+     * 对Controller中返回R对象以及Page对象的方法实现信息统计
+     * 
+     * @param pjp
+     * @return
+     * @author gaz
+     */
     private Object methodHandler(ProceedingJoinPoint pjp) {
         long startTime = System.currentTimeMillis();
 

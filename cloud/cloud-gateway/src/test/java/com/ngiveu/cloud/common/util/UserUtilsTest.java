@@ -1,4 +1,4 @@
-package com.github.pig.common.util;
+package com.ngiveu.cloud.common.util;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import com.ngiveu.cloud.common.constant.CommonConstant;
 import java.util.Optional;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/12/22
  */
 public class UserUtilsTest {

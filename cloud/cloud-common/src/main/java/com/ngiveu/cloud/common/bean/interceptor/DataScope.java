@@ -13,7 +13,10 @@ import java.util.List;
  */
 @Data
 public class DataScope extends HashMap {
-    /**
+	
+	private static final long serialVersionUID = 2342501219276282693L;
+
+	/**
      * 限制范围的字段名称
      */
     private String scopeName = "dept_id";

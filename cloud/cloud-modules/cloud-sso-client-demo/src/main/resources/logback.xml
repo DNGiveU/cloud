@@ -5,7 +5,7 @@
         <resetJUL>true</resetJUL>
     </contextListener>
 
-    <property name="appname" value="pig"/>
+    <property name="appname" value="cloud"/>
 
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
     <property name="LOG_HOME" value="logs/ev_cmdb"/>
@@ -40,7 +40,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.github.pig" level="debug">
+    <logger name="com.ngiveu.cloud" level="debug">
         <!-- wenjie delete <appender-ref ref="file" /> <appender-ref ref="console"
             /> -->
     </logger>

@@ -115,7 +115,7 @@ public class CloudAuthorizationConfig extends AuthorizationServerConfigurerAdapt
     public TokenEnhancer tokenEnhancer() {
         return (accessToken, authentication) -> {
             final Map<String, Object> additionalInfo = new HashMap<>(1);
-            additionalInfo.put("license", SecurityConstants.PIG_LICENSE);
+            additionalInfo.put("license", SecurityConstants.CLOUD_LICENSE);
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;
         };

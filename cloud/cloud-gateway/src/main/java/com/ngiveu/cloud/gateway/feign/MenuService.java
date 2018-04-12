@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Set;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/10/31
  */
-@FeignClient(name = "pig-upms-service", fallback = MenuServiceFallbackImpl.class)
+@FeignClient(name = "cloud-upms-service", fallback = MenuServiceFallbackImpl.class)
 public interface MenuService {
     /**
      * 通过角色名查询菜单

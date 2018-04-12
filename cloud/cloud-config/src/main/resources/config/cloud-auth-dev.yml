@@ -1,6 +1,10 @@
 server:
   port: 3000
   
+jasypt:
+  encryptor:
+    password: lengleng
+  
 # datasoure默认使用JDBC
 spring:
   freemarker:
@@ -18,8 +22,9 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates/
 
+# com.ngiveu.cloud.auth.config.AuthServerConfig
 # Authorization=Bearer Base64(clientId:clientSecret)      
-pig:
+cloud:
   auth:
     clientId: ENC(Ho5VxMWMMIzfIEE8/WxVzA==)   # 机密后的client-id
     clientSecret: ENC(Ho5VxMWMMIzfIEE8/WxVzA==) # 机密后的client-secret

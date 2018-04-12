@@ -31,7 +31,7 @@ cache:
 ribbon:
   eager-load:
     enabled: true
-    clients: pig-auth,pig-upms-service
+    clients: cloud-auth,cloud-upms-service
   Httpclient:
     enable: false
   OkHttp: # 使用okhttp进行网络请求

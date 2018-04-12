@@ -23,7 +23,7 @@ import java.io.PrintWriter;
  * @author lengleng
  * @date 2017/12/29
  * 授权拒绝处理器，覆盖默认的OAuth2AccessDeniedHandler
- * 包装失败信息到PigDeniedException
+ * 包装失败信息到CloudDeniedException
  */
 @Component
 public class CloudAccessDeniedHandler extends OAuth2AccessDeniedHandler {

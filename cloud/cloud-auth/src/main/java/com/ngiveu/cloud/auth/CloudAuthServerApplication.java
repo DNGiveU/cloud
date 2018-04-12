@@ -7,15 +7,15 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @author lengleng
- *         获取用户信息也是通过这个应用实现
- *         这里既是认证服务器，也是资源服务器
- *         EnableResourceServer
+ * 获取用户信息也是通过这个应用实现
+ * 这里既是认证服务器，也是资源服务器
+ * EnableResourceServer
+ * @author gaz
  */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-@ComponentScan(basePackages = {"com.github.pig.auth", "com.github.pig.common.bean"})
+@ComponentScan(basePackages = {"com.ngiveu.cloud.auth", "com.ngiveu.cloud.common.bean"})
 public class CloudAuthServerApplication {
 
     public static void main(String[] args) {

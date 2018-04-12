@@ -65,7 +65,7 @@ public class SmsAliyunMessageHandler extends AbstractMessageHandler {
          * 短信模板变量，传参规则{"key":"value"}，key的名字须和申请模板中的变量名一致，多个变量之间以逗号隔开。示例：针对模板“验证码${code}，您正在进行${product}身份验证，打死不要告诉别人哦！”，传参时需传入{"code":"1234","product":"alidayu"}
          */
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("product","pig_cloud");
+        jsonObject.put("product","cloud");
         jsonObject.put("code",mobileMsgTemplate.getText());
         request.setSmsParamString(jsonObject.toString());
         /**

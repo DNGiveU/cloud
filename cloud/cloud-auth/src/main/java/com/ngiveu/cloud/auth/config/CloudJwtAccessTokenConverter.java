@@ -14,10 +14,11 @@ import java.util.Map;
  * token 声明版权
  */
 public class CloudJwtAccessTokenConverter extends JwtAccessTokenConverter {
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Map<String, ?> convertAccessToken(OAuth2AccessToken token, OAuth2Authentication authentication) {
         Map<String, Object> representation = (Map<String, Object>) super.convertAccessToken(token, authentication);
-        representation.put("license", SecurityConstants.PIG_LICENSE);
+        representation.put("license", SecurityConstants.CLOUD_LICENSE);
         return representation;
     }
 

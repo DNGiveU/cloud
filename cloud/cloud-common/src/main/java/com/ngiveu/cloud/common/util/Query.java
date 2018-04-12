@@ -10,7 +10,9 @@ import java.util.Map;
  * @date 2017/12/10
  */
 public class Query<T> extends Page<T> {
-    private static final String PAGE = "page";
+	
+	private static final long serialVersionUID = -2365950761268645826L;
+	private static final String PAGE = "page";
     private static final String LIMIT = "limit";
     private static final String ORDER_BY_FIELD = "orderByField";
     private static final String IS_ASC = "isAsc";

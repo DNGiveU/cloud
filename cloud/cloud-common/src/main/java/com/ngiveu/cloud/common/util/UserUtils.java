@@ -80,7 +80,8 @@ public class UserUtils {
      * @param httpServletRequest request
      * @return 角色名
      */
-    public static List<String> getRole(HttpServletRequest httpServletRequest) {
+    @SuppressWarnings("unchecked")
+	public static List<String> getRole(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
         String key = Base64.getEncoder().encodeToString(CommonConstant.SIGN_KEY.getBytes());
         Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();

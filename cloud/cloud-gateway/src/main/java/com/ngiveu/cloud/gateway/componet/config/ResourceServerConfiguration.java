@@ -29,7 +29,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Autowired
     private OAuth2WebSecurityExpressionHandler expressionHandler;
     @Autowired
-    private CloudAccessDeniedHandler pigAccessDeniedHandler;
+    private CloudAccessDeniedHandler cloudAccessDeniedHandler;
     @Autowired
     private ValidateCodeFilter validateCodeFilter;
 
@@ -50,7 +50,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.expressionHandler(expressionHandler);
-        resources.accessDeniedHandler(pigAccessDeniedHandler);
+        resources.accessDeniedHandler(cloudAccessDeniedHandler);
     }
 
     /**

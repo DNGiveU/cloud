@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @SpringBootApplication
 @EnableFeignClients
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@ComponentScan(basePackages = {"com.github.pig.gateway", "com.github.pig.common.bean"})
+@ComponentScan(basePackages = {"com.ngiveu.cloud.gateway", "com.ngiveu.cloud.common.bean"})
 public class CloudGatewayApplication {
 
     public static void main(String[] args) {

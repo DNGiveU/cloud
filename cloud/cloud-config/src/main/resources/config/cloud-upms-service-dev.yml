@@ -1,5 +1,8 @@
 server:
   port: 4000
+jasypt:
+  encryptor:
+    password: lengleng
 #Redis cache 过期时间设置
 redis:
   cache:

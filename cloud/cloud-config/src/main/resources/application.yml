@@ -5,15 +5,20 @@ spring:
   application:
     name: cloud-config-server
   profiles:
-    active: dev # 配置文件本地化值为 native
+    active: dev, native # 配置文件本地化值为 native
   cloud:
     config:
       server:
+        native:
+          search-locations: classpath:/config/
         # 配置文件本地化配置: server.native.search-locations: classpath:/config/ # 在resources/config下
-        git:
-          uri: https://gitee.com/DNGiveU/pig-config.git
-          username: DNGiveU
-          password: han19951226
+        # 通过git托管配置文件
+        # git:
+        #  uri: https://gitee.com/DNGiveU/pig-config.git
+        #  username: DNGiveU
+        #  password: han19951226
+# spring.profiles.active: native
+
 ---
 spring:
   profiles: dev
