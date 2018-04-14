@@ -121,7 +121,11 @@ public class UserController extends BaseController {
      */
     @GetMapping("/findUserByUsername/{username}")
     public UserVO findUserByUsername(@PathVariable String username) {
-        return userService.findUserByUsername(username);
+    	this.userService.info();
+        UserVO userVO = userService.findUserByUsername(username);
+        System.out.println(userVO.getClass().getClassLoader());
+        System.out.println(userVO);
+        return userVO;
     }
 
     /**

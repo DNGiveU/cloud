@@ -14,6 +14,9 @@ import com.ngiveu.cloud.common.vo.UserVO;
  * @date 2017/10/31
  */
 public interface SysUserService extends IService<SysUser> {
+	
+	void info(); 
+	
     /**
      * 根据用户名查询用户角色信息
      *

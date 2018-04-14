@@ -66,6 +66,7 @@ cloud-config启动 -Xmx350m -Xms250m
 cloud-auth启动 -Xmx350m -Xms250m
 cloud-gateway启动 -Xmx350m -Xms250m
 cloud-upms-service启动 -Xmx400m -Xms250m
+cloud-tabe-service启动 -Xmx400m -Xms250m
 ```
 
 ### 测试请求
@@ -76,4 +77,9 @@ curl -H "Authorization:Basic cGlnOnBpZw==" -d "grant_type=password&scope=server&
 
 # 请求数据 Authorization头信息中Bearer后面跟的是认证之后返回的token
 curl -H "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDk1NzA0NjMsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXSwianRpIjoiZWMwZmJhMjYtMGJkZS00YjY2LThhZTQtZGRmYTNiMzkxZGM5IiwiY2xpZW50X2lkIjoicGlnIiwic2NvcGUiOlsic2VydmVyIl19.ZoSU_4NhdolnV6ZsNaSXITC_pewUDiaqZPLoESu9f9s" http://localhost:9999/admin/user/info
+```
+
+### FAQ
+```java
+1. 如果出现实体类转换失败(ClassCastException),则估计是lombok引起的(因为改了重新写就没有事儿-动态生成的锅(不知道是动态生成的,还是静态编译的)).
 ```

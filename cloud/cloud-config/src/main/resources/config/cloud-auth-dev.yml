@@ -26,8 +26,8 @@ spring:
 # Authorization=Bearer Base64(clientId:clientSecret)      
 cloud:
   auth:
-    clientId: ENC(Ho5VxMWMMIzfIEE8/WxVzA==)   # 机密后的client-id
-    clientSecret: ENC(Ho5VxMWMMIzfIEE8/WxVzA==) # 机密后的client-secret
+    clientId: pig   # 机密后的client-id => pig
+    clientSecret: pig # 机密后的client-secret => pig
     scope: server
   social:
     qq:
