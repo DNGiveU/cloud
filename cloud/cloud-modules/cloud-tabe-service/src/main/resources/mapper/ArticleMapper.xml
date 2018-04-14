@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.ArticleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Article">
+        <id column="id" property="id" />
+        <result column="article_user_id" property="articleUserId" />
+        <result column="article_title" property="articleTitle" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_parent_category_id" property="articleParentCategoryId" />
+        <result column="article_child_category_id" property="articleChildCategoryId" />
+        <result column="article_tag_ids" property="articleTagIds" />
+        <result column="article_view_count" property="articleViewCount" />
+        <result column="article_comment_count" property="articleCommentCount" />
+        <result column="article_like_count" property="articleLikeCount" />
+        <result column="article_post_time" property="articlePostTime" />
+        <result column="article_update_time" property="articleUpdateTime" />
+        <result column="article_is_comment" property="articleIsComment" />
+        <result column="article_status" property="articleStatus" />
+        <result column="article_order" property="articleOrder" />
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, article_user_id AS articleUserId, article_title AS articleTitle, article_content AS articleContent, article_parent_category_id AS articleParentCategoryId, article_child_category_id AS articleChildCategoryId, article_tag_ids AS articleTagIds, article_view_count AS articleViewCount, article_comment_count AS articleCommentCount, article_like_count AS articleLikeCount, article_post_time AS articlePostTime, article_update_time AS articleUpdateTime, article_is_comment AS articleIsComment, article_status AS articleStatus, article_order AS articleOrder, del_flag AS delFlag
+    </sql>
+
+</mapper>

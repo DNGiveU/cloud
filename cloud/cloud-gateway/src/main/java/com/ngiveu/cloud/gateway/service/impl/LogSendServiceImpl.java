@@ -1,5 +1,21 @@
 package com.ngiveu.cloud.gateway.service.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.netflix.zuul.context.RequestContext;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.constant.MqQueueConstant;
@@ -10,22 +26,9 @@ import com.ngiveu.cloud.gateway.service.LogSendService;
 import com.xiaoleilu.hutool.http.HttpUtil;
 import com.xiaoleilu.hutool.io.IoUtil;
 import com.xiaoleilu.hutool.util.URLUtil;
-import org.apache.commons.lang.StringUtils;
-import org.apache.http.HttpStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2017/11/16
  * 消息发往消息队列工具类
  */
@@ -56,6 +59,8 @@ public class LogSendServiceImpl implements LogSendService {
         log.setUserAgent(request.getHeader("user-agent"));
         log.setParams(HttpUtil.toParams(request.getParameterMap()));
         log.setCreateBy(UserUtils.getUserName(request));
+        log.setCreateTime(new Date());
+        log.setUpdateTime(log.getCreateTime());
         Long startTime = (Long) requestContext.get("startTime");
         log.setTime(System.currentTimeMillis() - startTime);
         if (requestContext.get(SERVICE_ID) != null) {

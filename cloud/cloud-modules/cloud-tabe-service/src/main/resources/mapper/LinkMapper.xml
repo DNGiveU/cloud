@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.LinkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Link">
+        <id column="id" property="id" />
+        <result column="link_url" property="linkUrl" />
+        <result column="link_name" property="linkName" />
+        <result column="link_image" property="linkImage" />
+        <result column="link_description" property="linkDescription" />
+        <result column="link_owner_nickname" property="linkOwnerNickname" />
+        <result column="link_owner_contact" property="linkOwnerContact" />
+        <result column="link_update_time" property="linkUpdateTime" />
+        <result column="link_create_time" property="linkCreateTime" />
+        <result column="link_order" property="linkOrder" />
+        <result column="link_status" property="linkStatus" />
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, link_url AS linkUrl, link_name AS linkName, link_image AS linkImage, link_description AS linkDescription, link_owner_nickname AS linkOwnerNickname, link_owner_contact AS linkOwnerContact, link_update_time AS linkUpdateTime, link_create_time AS linkCreateTime, link_order AS linkOrder, link_status AS linkStatus, del_flag AS delFlag
+    </sql>
+
+</mapper>

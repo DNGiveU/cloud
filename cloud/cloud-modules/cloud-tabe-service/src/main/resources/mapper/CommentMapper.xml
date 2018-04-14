@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.CommentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Comment">
+        <id column="id" property="id" />
+        <result column="comment_pid" property="commentPid" />
+        <result column="comment_pname" property="commentPname" />
+        <result column="comment_article_id" property="commentArticleId" />
+        <result column="comment_author_name" property="commentAuthorName" />
+        <result column="comment_author_email" property="commentAuthorEmail" />
+        <result column="comment_author_url" property="commentAuthorUrl" />
+        <result column="comment_content" property="commentContent" />
+        <result column="comment_agent" property="commentAgent" />
+        <result column="comment_ip" property="commentIp" />
+        <result column="comment_create_time" property="commentCreateTime" />
+        <result column="comment_role" property="commentRole" />
+        <result column="comment_status" property="commentStatus" />
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, comment_pid AS commentPid, comment_pname AS commentPname, comment_article_id AS commentArticleId, comment_author_name AS commentAuthorName, comment_author_email AS commentAuthorEmail, comment_author_url AS commentAuthorUrl, comment_content AS commentContent, comment_agent AS commentAgent, comment_ip AS commentIp, comment_create_time AS commentCreateTime, comment_role AS commentRole, comment_status AS commentStatus, update_time AS updateTime, del_flag AS delFlag
+    </sql>
+
+</mapper>

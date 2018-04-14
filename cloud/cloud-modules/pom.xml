@@ -22,6 +22,7 @@
         <module>cloud-mc-service</module>
         <module>cloud-sso-client-demo</module>
         <module>cloud-upms-service</module>
+        <module>cloud-tabe-service</module>
     </modules>
 
 </project>

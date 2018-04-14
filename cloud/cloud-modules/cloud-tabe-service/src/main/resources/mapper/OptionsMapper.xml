@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.OptionsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Options">
+        <id column="id" property="id" />
+        <result column="option_site_title" property="optionSiteTitle" />
+        <result column="option_site_descrption" property="optionSiteDescrption" />
+        <result column="option_meta_descrption" property="optionMetaDescrption" />
+        <result column="option_meta_keyword" property="optionMetaKeyword" />
+        <result column="option_aboutsite_avatar" property="optionAboutsiteAvatar" />
+        <result column="option_aboutsite_title" property="optionAboutsiteTitle" />
+        <result column="option_aboutsite_content" property="optionAboutsiteContent" />
+        <result column="option_aboutsite_wechat" property="optionAboutsiteWechat" />
+        <result column="option_aboutsite_qq" property="optionAboutsiteQq" />
+        <result column="option_aboutsite_github" property="optionAboutsiteGithub" />
+        <result column="option_aboutsite_weibo" property="optionAboutsiteWeibo" />
+        <result column="option_tongji" property="optionTongji" />
+        <result column="option_status" property="optionStatus" />
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, option_site_title AS optionSiteTitle, option_site_descrption AS optionSiteDescrption, option_meta_descrption AS optionMetaDescrption, option_meta_keyword AS optionMetaKeyword, option_aboutsite_avatar AS optionAboutsiteAvatar, option_aboutsite_title AS optionAboutsiteTitle, option_aboutsite_content AS optionAboutsiteContent, option_aboutsite_wechat AS optionAboutsiteWechat, option_aboutsite_qq AS optionAboutsiteQq, option_aboutsite_github AS optionAboutsiteGithub, option_aboutsite_weibo AS optionAboutsiteWeibo, option_tongji AS optionTongji, option_status AS optionStatus, update_time AS updateTime, del_flag AS delFlag
+    </sql>
+
+</mapper>

@@ -27,6 +27,8 @@ import com.xiaoleilu.hutool.collection.CollectionUtil;
 import com.xiaoleilu.hutool.util.RandomUtil;
 import com.xiaoleilu.hutool.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -201,13 +203,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         return Boolean.TRUE;
     }
 
+    /**
+     * 更新用户基本信息
+     */
     @Override
     @CacheEvict(value = "user_details", key = "#username")
     public Boolean updateUserInfo(UserDTO userDto, String username) {
         UserVO userVo = this.findUserByUsername(username);
 
         SysUser sysUser = new SysUser();
-        if (ENCODER.matches(userDto.getPassword(), userVo.getPassword())) {
+        if (StringUtils.isNotBlank(userDto.getPassword()) && ENCODER.matches(userDto.getPassword(), userVo.getPassword())) {
             sysUser.setPassword(ENCODER.encode(userDto.getNewpassword1()));
         }
         sysUser.setUserId(userVo.getUserId());
@@ -215,6 +220,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         return this.updateById(sysUser);
     }
 
+    /**
+     * 更新用户信息-包括权限等信息
+     */
     @Override
     @CacheEvict(value = "user_details", key = "#username")
     public Boolean updateUser(UserDTO userDto, String username) {

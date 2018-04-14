@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.NoticeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Notice">
+        <id column="id" property="id" />
+        <result column="notice_title" property="noticeTitle" />
+        <result column="notice_content" property="noticeContent" />
+        <result column="notice_create_time" property="noticeCreateTime" />
+        <result column="notice_update_time" property="noticeUpdateTime" />
+        <result column="notice_status" property="noticeStatus" />
+        <result column="notice_order" property="noticeOrder" />
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, notice_title AS noticeTitle, notice_content AS noticeContent, notice_create_time AS noticeCreateTime, notice_update_time AS noticeUpdateTime, notice_status AS noticeStatus, notice_order AS noticeOrder, del_flag AS delFlag
+    </sql>
+
+</mapper>

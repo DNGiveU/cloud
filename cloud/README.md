@@ -62,6 +62,10 @@ elasticsearch: 192.168.0.200:5601 [index=zipkin]
 
 建议启动参数:
 cloud-eureka启动 -Xmx350m -Xms250m
+cloud-config启动 -Xmx350m -Xms250m
+cloud-auth启动 -Xmx350m -Xms250m
+cloud-gateway启动 -Xmx350m -Xms250m
+cloud-upms-service启动 -Xmx400m -Xms250m
 ```
 
 ### 测试请求

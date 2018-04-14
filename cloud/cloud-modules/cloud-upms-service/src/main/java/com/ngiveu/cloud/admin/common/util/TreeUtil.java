@@ -15,6 +15,7 @@ public class TreeUtil {
      * 两层循环实现建树
      *
      * @param treeNodes 传入的树节点列表
+     * @param root 根节点
      * @return
      */
     public static <T extends TreeNode> List<T> bulid(List<T> treeNodes, Object root) {
@@ -22,12 +23,11 @@ public class TreeUtil {
         List<T> trees = new ArrayList<T>();
 
         for (T treeNode : treeNodes) {
-
-            if (root.equals(treeNode.getParentId())) {
+            if (root.equals(treeNode.getParentId())) {	// 获取父节点下的第一层节点
                 trees.add(treeNode);
             }
 
-            for (T it : treeNodes) {
+            for (T it : treeNodes) {	// 以当前值为父节点,查询子节点 (循环结构就形成了子节点->子节点->子节点)
                 if (it.getParentId() == treeNode.getId()) {
                     if (treeNode.getChildren() == null) {
                         treeNode.setChildren(new ArrayList<TreeNode>());
@@ -43,6 +43,7 @@ public class TreeUtil {
      * 使用递归方法建树
      *
      * @param treeNodes
+     * @param root 根节点
      * @return
      */
     public static <T extends TreeNode> List<T> buildByRecursive(List<T> treeNodes, Object root) {
