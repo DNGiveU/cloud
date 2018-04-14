@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -47,6 +48,7 @@ public class MenuController extends BaseController {
     public List<MenuTree> getTree() {
         SysMenu condition = new SysMenu();
         condition.setDelFlag(CommonConstant.STATUS_NORMAL);
+        System.out.println(sysMenuService.selectList(new EntityWrapper<>(condition)).size());
         return getMenuTree(sysMenuService.selectList(new EntityWrapper<>(condition)), -1);
     }
 
@@ -130,6 +132,12 @@ public class MenuController extends BaseController {
     }
 
     private List<MenuTree> getMenuTree(List<SysMenu> menus, int root) {
+    	// 从小到大排序 升序
+    	/*Comparator<SysMenu> comparator = (sysMenu1, sysMenu2) -> {
+        	return -(sysMenu1.getSort() - sysMenu2.getSort());
+        };
+        menus.sort(comparator);*/
+    	
         List<MenuTree> trees = new ArrayList<MenuTree>();
         MenuTree node = null;
         for (SysMenu menu : menus) {
@@ -145,6 +153,7 @@ public class MenuController extends BaseController {
             node.setIcon(menu.getIcon());
             trees.add(node);
         }
+        
         return TreeUtil.bulid(trees, root);
     }
 }

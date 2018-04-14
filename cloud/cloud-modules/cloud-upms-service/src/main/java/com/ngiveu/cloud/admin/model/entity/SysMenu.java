@@ -59,7 +59,7 @@ public class SysMenu extends Model<SysMenu> {
     /**
      * 排序值
      */
-	private Integer sort;
+	private Integer sort = 0;
     /**
      * 菜单类型 （0菜单 1按钮）
      */

@@ -1,9 +1,12 @@
 package com.ngiveu.cloud.admin.common.config;
 
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author lengleng
@@ -20,6 +23,17 @@ public class MybatisPlusConfig {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
+    }
+    
+    /**
+     * 性能插件
+     * @return
+     * @author gaz
+     */
+    @Bean
+    @Profile(value = {"dev"})
+    public PerformanceInterceptor performanceInterceptor() {
+    	return new PerformanceInterceptor();
     }
 
     /**
