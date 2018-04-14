@@ -64,15 +64,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private SysUserRoleService sysUserRoleService;
     @Autowired
     private SysDeptRelationService sysDeptRelationService;
-    
-    public void info() {
-    	System.out.println(sysMenuService);
-    	System.out.println(redisTemplate);
-    	System.out.println(sysUserMapper);
-    	System.out.println(rabbitTemplate);
-    	System.out.println(sysUserRoleService);
-    	System.out.println(sysDeptRelationService);
-    }
 
     @Override
     public UserInfo findUserInfo(UserVO userVo) {
@@ -103,10 +94,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     @Cacheable(value = "user_details", key = "#username")
     public UserVO findUserByUsername(String username) {
-        UserVO userVO = sysUserMapper.selectUserVoByUsername(username);
-        System.out.println(userVO.getClass().getClassLoader());
-        System.out.println(userVO);
-        return userVO;
+    	return sysUserMapper.selectUserVoByUsername(username);
     }
 
     /**

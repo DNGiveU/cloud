@@ -2,6 +2,15 @@ server:
   port: 9999
 
 spring:
+  redis:
+    remote: true        # cachecloud 获取
+    host: 192.168.0.200
+    port: 6379
+    password:
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
   rabbitmq:
     host: 192.168.0.200
     port: 5672
@@ -13,12 +22,45 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+      
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enable: true
+  httpclient:
+    enable: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 30000
+        readTimeout: 30000  
 
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 800
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+            
+# 负载均衡路由设置
 zuul:
   ribbon:
     eager-load:
       enabled: true
-      clients: cloud-auth,cloud-upms-service
+      clients: cloud-auth,cloud-upms-service,cloud-tabe-service
+    Httpclient:
+    enable: false
+  OkHttp: # 使用okhttp进行网络请求
+    enable: true
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
   ignoredServices: '*'
   host:
     connect-timeout-millis: 30000

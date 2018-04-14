@@ -4,6 +4,15 @@ redis:
   cache:
     expiration: 3600
 spring:
+  redis:
+    remote: true        # cachecloud 获取
+    host: 192.168.0.200
+    port: 6379
+    password:
+  http:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
   rabbitmq:
     host: 192.168.0.200
     port: 5672 

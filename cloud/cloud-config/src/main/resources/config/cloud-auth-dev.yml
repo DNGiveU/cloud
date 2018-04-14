@@ -7,6 +7,11 @@ jasypt:
   
 # datasoure默认使用JDBC
 spring:
+  redis:
+    remote: true        # cachecloud 获取
+    host: 192.168.0.200
+    port: 6379
+    password: 
   freemarker:
     allow-request-override: false
     allow-session-override: false
