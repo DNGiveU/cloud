@@ -8,14 +8,14 @@
                   highlight-current-row style="width: 100%">
             #foreach($field in $table.fields)
             <el-table-column align="center" label="${field.comment}">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <span>{{ scope.row.${field.propertyName} }}</span>
                 </template>
             </el-table-column>
             #end
 
             <el-table-column label="操作">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button v-if="${table.name}_upd" size="small" type="success"
                                @click="handleUpdate(scope.row)">编辑
                     </el-button>
