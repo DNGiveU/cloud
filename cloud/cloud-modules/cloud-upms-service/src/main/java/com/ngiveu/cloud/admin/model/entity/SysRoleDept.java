@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import lombok.Data;
 
 import java.io.Serializable;
 
@@ -14,10 +13,9 @@ import java.io.Serializable;
  * 角色与部门对应关系
  * </p>
  *
- * @author lengleng
+ * @author gaz
  * @since 2018-01-20
  */
-@Data
 @TableName("sys_role_dept")
 public class SysRoleDept extends Model<SysRoleDept> {
 
@@ -40,6 +38,30 @@ public class SysRoleDept extends Model<SysRoleDept> {
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+
+	public Integer getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
 	}
 
 	@Override

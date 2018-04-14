@@ -66,11 +66,13 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--Lombok-->
+        <!-- 使用lombok修饰的类放到redis中,取出后会发生ClassCaseException
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        -->
         <!--测试依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,13 +1,19 @@
 package com.ngiveu.cloud.admin.model.dto;
 
-import lombok.Data;
-
 /**
- * @author lengleng
+ * @author gaz
  * @date 2018/1/20
  * 部门树
  */
-@Data
 public class DeptTree extends TreeNode {
     private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+    
 }

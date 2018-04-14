@@ -2,7 +2,6 @@ package com.ngiveu.cloud.admin.model.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-import lombok.Data;
 
 import java.io.Serializable;
 
@@ -11,10 +10,9 @@ import java.io.Serializable;
  * 
  * </p>
  *
- * @author lengleng
+ * @author gaz
  * @since 2018-01-22
  */
-@Data
 @TableName("sys_dept_relation")
 public class SysDeptRelation extends Model<SysDeptRelation> {
 
@@ -33,6 +31,22 @@ public class SysDeptRelation extends Model<SysDeptRelation> {
 	@Override
 	protected Serializable pkVal() {
 		return this.ancestor;
+	}
+
+	public Integer getAncestor() {
+		return ancestor;
+	}
+
+	public void setAncestor(Integer ancestor) {
+		this.ancestor = ancestor;
+	}
+
+	public Integer getDescendant() {
+		return descendant;
+	}
+
+	public void setDescendant(Integer descendant) {
+		this.descendant = descendant;
 	}
 
 	@Override

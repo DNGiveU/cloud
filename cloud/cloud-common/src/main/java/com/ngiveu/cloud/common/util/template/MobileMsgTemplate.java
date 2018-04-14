@@ -1,17 +1,18 @@
 package com.ngiveu.cloud.common.util.template;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
 /**
- * @author lengleng
+ * @author gaz
  * @date 2018/1/15
  * 短信消息模板
  */
-@Data
 public class MobileMsgTemplate implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8156743849160124506L;
+	/**
      * 手机号
      */
     private String mobile;
@@ -24,7 +25,31 @@ public class MobileMsgTemplate implements Serializable {
      */
     private String type;
 
-    public MobileMsgTemplate(String mobile, String text, String type) {
+    public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public MobileMsgTemplate(String mobile, String text, String type) {
         this.mobile = mobile;
         this.text = text;
         this.type = type;

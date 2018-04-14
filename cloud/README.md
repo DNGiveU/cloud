@@ -81,5 +81,5 @@ curl -H "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1M
 
 ### FAQ
 ```java
-1. 如果出现实体类转换失败(ClassCastException),则估计是lombok引起的(因为改了重新写就没有事儿-动态生成的锅(不知道是动态生成的,还是静态编译的)).
+1. 如果出现实体类转换失败(ClassCastException),则估计是lombok引起的(因为改了重新写就没有事儿-动态生成的锅(不知道是动态生成的,还是静态编译的)).lombok修饰的类放到redis中,取出后会发生ClassCaseException
 ```
