@@ -1,5 +1,20 @@
 package com.ngiveu.cloud.admin.controller;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.ngiveu.cloud.admin.common.util.TreeUtil;
 import com.ngiveu.cloud.admin.model.dto.MenuTree;
@@ -9,14 +24,6 @@ import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.R;
 import com.ngiveu.cloud.common.vo.MenuVO;
 import com.ngiveu.cloud.common.web.BaseController;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author lengleng
@@ -44,12 +51,10 @@ public class MenuController extends BaseController {
      *
      * @return 树形菜单
      */
-    @GetMapping(value = "/tree")
+    @SuppressWarnings("unchecked")
+	@GetMapping(value = "/tree")
     public List<MenuTree> getTree() {
-        SysMenu condition = new SysMenu();
-        condition.setDelFlag(CommonConstant.STATUS_NORMAL);
-        System.out.println(sysMenuService.selectList(new EntityWrapper<>(condition)).size());
-        return getMenuTree(sysMenuService.selectList(new EntityWrapper<>(condition)), -1);
+        return getMenuTree(sysMenuService.selectList(new EntityWrapper().eq("del_flag", CommonConstant.STATUS_NORMAL)), -1);
     }
 
     /**
@@ -133,10 +138,10 @@ public class MenuController extends BaseController {
 
     private List<MenuTree> getMenuTree(List<SysMenu> menus, int root) {
     	// 从小到大排序 升序
-    	/*Comparator<SysMenu> comparator = (sysMenu1, sysMenu2) -> {
-        	return -(sysMenu1.getSort() - sysMenu2.getSort());
+    	Comparator<SysMenu> comparator = (sysMenu1, sysMenu2) -> {
+        	return (sysMenu1.getSort() - sysMenu2.getSort());
         };
-        menus.sort(comparator);*/
+        menus.sort(comparator);
     	
         List<MenuTree> trees = new ArrayList<MenuTree>();
         MenuTree node = null;

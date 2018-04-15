@@ -90,7 +90,17 @@ public class ArticleController extends BaseController {
      */
     @PutMapping
     public Boolean edit(@RequestBody Article article) {
-        article.setArticleUpdateTime(new Date());
-        return articleService.updateById(article);
+    	// 先判断是否存在记录
+    	Article articlePO = null;
+    	if ((articlePO = this.articleService.selectById(article.getId())) != null) {
+    		articlePO.setArticleTitle(article.getArticleTitle()); // 标题
+    		articlePO.setArticleContent(article.getArticleContent()); // 内容
+    		articlePO.setArticleChildCategoryId(article.getArticleChildCategoryId()); // 类别
+    		articlePO.setArticleTagIds(article.getArticleTagIds());	// 标签
+    		articlePO.setArticleUpdateTime(new Date());
+    		return articleService.updateById(articlePO);
+    	} else {
+    		return false;
+    	}
     }
 }

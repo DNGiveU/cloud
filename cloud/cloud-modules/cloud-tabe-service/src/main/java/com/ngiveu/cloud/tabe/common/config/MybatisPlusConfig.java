@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
  * @date 2018年4月5日
  */
 @Configuration
-@MapperScan(basePackages = "con.ngiveu.cloud.tabe.mapper")
+@MapperScan(basePackages = "com.ngiveu.cloud.tabe.mapper")
 public class MybatisPlusConfig {
 
 	/**

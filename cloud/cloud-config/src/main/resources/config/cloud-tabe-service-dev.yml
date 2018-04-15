@@ -26,6 +26,23 @@ spring:
       percentage: 1.0
 logging:
   config: classpath:logback.xml
+# 分库分表支持
+sharding:
+  jdbc:
+    defaultDataSourceName:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/tabe?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    datasource:
+      names: ds
+      ds:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: root
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/tabe?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
 # mybatis-plus配置,修改主键类型,mapper.xml/type别名等
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
@@ -42,20 +59,3 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: true
-# 分库分表支持
-sharding:
-  jdbc:
-    defaultDataSourceName:
-      type: com.zaxxer.hikari.HikariDataSource
-      driver-class-name: com.mysql.jdbc.Driver
-      username: root
-      password: root
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/tabe?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
-    datasource:
-      names: ds
-      ds:
-        type: com.zaxx.hikari.HikariDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        username: root
-        password: root
-        jdbc-url: jdbc:mysql://127.0.0.1:3306/tabe?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false

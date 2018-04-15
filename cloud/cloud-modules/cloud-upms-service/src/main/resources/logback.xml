@@ -61,5 +61,6 @@
     <logger name="org.apache.http" level="WARN"/>
     <logger name="com.ulisesbocchio" level="WARN"/>
     <logger name="com.netflix.discovery" level="WARN"/>
-    <logger name="org.apache.ibatis" level="DEBUG"/>
+    <logger name="org.apache.ibatis" level="INFO"/>
+    <logger name="io.shardingjdbc.core.jdbc.core.statement" level="INFO" />
 </configuration>
