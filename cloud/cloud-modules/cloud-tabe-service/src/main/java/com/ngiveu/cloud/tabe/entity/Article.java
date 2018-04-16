@@ -31,8 +31,8 @@ public class Article extends Model<Article> {
     private Integer articleParentCategoryId;
     @TableField("article_child_category_id")
     private Integer articleChildCategoryId;
-    @TableField("article_tag_ids")
-    private String articleTagIds;
+    @TableField("article_tags")
+    private String articleTags;
     @TableField("article_view_count")
     private Integer articleViewCount;
     @TableField("article_comment_count")
@@ -92,14 +92,6 @@ public class Article extends Model<Article> {
 
     public void setArticleChildCategoryId(Integer articleChildCategoryId) {
         this.articleChildCategoryId = articleChildCategoryId;
-    }
-
-    public String getArticleTagIds() {
-        return articleTagIds;
-    }
-
-    public void setArticleTagIds(String articleTagIds) {
-        this.articleTagIds = articleTagIds;
     }
 
     public Integer getArticleViewCount() {
@@ -187,7 +179,15 @@ public class Article extends Model<Article> {
         this.delFlag = delFlag;
     }
 
-    @Override
+    public String getArticleTags() {
+		return articleTags;
+	}
+
+	public void setArticleTags(String articleTags) {
+		this.articleTags = articleTags;
+	}
+
+	@Override
     public String toString() {
         return "Article{" +
         ", id=" + id +
@@ -196,7 +196,7 @@ public class Article extends Model<Article> {
         ", articleContent=" + articleContent +
         ", articleParentCategoryId=" + articleParentCategoryId +
         ", articleChildCategoryId=" + articleChildCategoryId +
-        ", articleTagIds=" + articleTagIds +
+        ", articleTagIds=" + articleTags +
         ", articleViewCount=" + articleViewCount +
         ", articleCommentCount=" + articleCommentCount +
         ", articleLikeCount=" + articleLikeCount +

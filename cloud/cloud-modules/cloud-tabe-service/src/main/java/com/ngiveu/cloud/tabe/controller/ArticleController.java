@@ -96,7 +96,7 @@ public class ArticleController extends BaseController {
     		articlePO.setArticleTitle(article.getArticleTitle()); // 标题
     		articlePO.setArticleContent(article.getArticleContent()); // 内容
     		articlePO.setArticleChildCategoryId(article.getArticleChildCategoryId()); // 类别
-    		articlePO.setArticleTagIds(article.getArticleTagIds());	// 标签
+    		articlePO.setArticleTags(article.getArticleTags());	// 标签
     		articlePO.setArticleUpdateTime(new Date());
     		return articleService.updateById(articlePO);
     	} else {

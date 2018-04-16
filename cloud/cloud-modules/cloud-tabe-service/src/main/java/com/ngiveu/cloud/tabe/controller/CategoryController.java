@@ -1,5 +1,6 @@
 package com.ngiveu.cloud.tabe.controller;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,16 @@ public class CategoryController extends BaseController {
     public Page page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
         return categoryService.selectPage(new Query<>(params), new EntityWrapper<>());
+    }
+    
+    /**
+     * 获取全部类别
+     * @return
+     * @author gaz
+     */
+    @GetMapping("/list")
+    public List<Category> list() {
+    	return this.categoryService.selectList(null);
     }
 
     /**
