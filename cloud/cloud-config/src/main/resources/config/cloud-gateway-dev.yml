@@ -112,6 +112,7 @@ urls:
   anon:
     - /mobile/**
     - /auth/**
+    - /tabe/**
     - /admin/code/*
     - /admin/smsCode/*
     - /admin/user/info

@@ -53,6 +53,7 @@ public class UserController extends BaseController {
      */
     @GetMapping("/info")
     public R<UserInfo> user(UserVO userVo) {
+    	System.out.println(userVo);
         UserInfo userInfo = userService.findUserInfo(userVo);
         return new R<>(userInfo);
     }

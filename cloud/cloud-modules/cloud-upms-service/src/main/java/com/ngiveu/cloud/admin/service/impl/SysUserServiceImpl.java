@@ -67,6 +67,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public UserInfo findUserInfo(UserVO userVo) {
+    	System.out.println(userVo);
         SysUser condition = new SysUser();
         condition.setUsername(userVo.getUsername());
         SysUser sysUser = this.selectOne(new EntityWrapper<>(condition));

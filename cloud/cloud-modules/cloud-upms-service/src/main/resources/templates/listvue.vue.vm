@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import { fetchList, addObj, putObj, delObj } from '@/api/${table.name}'
+    import { fetchList, addObj, putObj, delObj, getObj } from '@/api/${table.name}'
     import waves from '@/directive/waves/index.js' // 水波纹指令
     import { mapGetters } from 'vuex'
 
@@ -137,6 +137,13 @@
             handleCreate() {
                 this.dialogStatus = 'create'
                 this.dialogFormVisible = true
+            },
+            handleUpdate(row) {
+                getObj(row.id).then(res => {
+                    this.form = res.data
+                    this.dialogStatus = 'update'
+                    this.dialogFormVisible = true
+                })
             },
             create(formName) {
                 const set = this.$refs

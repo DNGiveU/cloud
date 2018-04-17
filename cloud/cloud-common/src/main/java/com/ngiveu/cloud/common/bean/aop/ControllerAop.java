@@ -77,21 +77,25 @@ public class ControllerAop {
 
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
+        System.out.println("======================<>=====================");
         String token = UserUtils.getToken(request);
+        System.out.println("token=" + token);
         UserVO userVo = null;
         if (StringUtils.isNotEmpty(token)) {
             userVo = cacheManager.getCache(SecurityConstants.TOKEN_USER_DETAIL).get(token, UserVO.class);
+            System.out.println("userVo=" + userVo);
         }
         String username;
         if (userVo == null) {
             username = UserUtils.getUserName(request);
+            System.out.println("username=" + username);
             if (StringUtils.isNotEmpty(username)) {
                 UserUtils.setUser(username);
             }
         } else {
             username = userVo.getUsername();
             UserUtils.setUser(username);
+            System.out.println("not null username=" + username);
         }
         logger.info("Controller AOP get username:{}", username);
 
@@ -104,6 +108,7 @@ public class ControllerAop {
         Object result;
 
         try {
+        	System.out.println("======================<>=====================");
             result = pjp.proceed();
             logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
         } catch (Throwable e) {
