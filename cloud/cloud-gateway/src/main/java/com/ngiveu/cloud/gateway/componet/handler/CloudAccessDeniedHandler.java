@@ -42,7 +42,7 @@ public class CloudAccessDeniedHandler extends OAuth2AccessDeniedHandler {
      */
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException authException) throws IOException, ServletException {
-        logger.info("授权失败，禁止访问");
+        logger.info("菜单授权失败，禁止访问!!!!!请检查菜单的URL设置是否与请求路径匹配('/'开头, **多级匹配)");
         response.setCharacterEncoding(CommonConstant.UTF8);
         response.setContentType(CommonConstant.CONTENT_TYPE);
         R<String> result = new R<>(new CloudDeniedException("授权失败，禁止访问"));

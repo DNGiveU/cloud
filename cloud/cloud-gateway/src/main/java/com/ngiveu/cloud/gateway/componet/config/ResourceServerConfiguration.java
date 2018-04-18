@@ -43,6 +43,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         for (String url : filterUrlsPropertiesConfig.getAnon()) {
             registry.antMatchers(url).permitAll();
         }
+        /** 
+         * 资源访问规则 org.springframework.security.web.access.expression.WebExpressionVoter#vote
+         * 获取用户菜单,判断是否可以访问URL
+         */
         registry.anyRequest()
                 .access("@permissionService.hasPermission(request,authentication)");
     }

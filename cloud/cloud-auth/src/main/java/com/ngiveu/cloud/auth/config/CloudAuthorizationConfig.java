@@ -1,15 +1,21 @@
 package com.ngiveu.cloud.auth.config;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
+import org.springframework.security.oauth2.common.OAuth2AccessTokenJackson2Serializer;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -20,13 +26,13 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.StandardStringSerializationStrategy;
 
+import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.constant.SecurityConstants;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author gaz
@@ -102,8 +108,34 @@ public class CloudAuthorizationConfig extends AuthorizationServerConfigurerAdapt
      */
     @Bean
     public TokenStore redisTokenStore() {
+    	
         RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
         tokenStore.setPrefix(SecurityConstants.CLOUD_PREFIX);
+        /**
+         * 
+        SimpleModule module = new SimpleModule();
+    	module.addSerializer(DefaultOAuth2AccessToken.class, new OAuth2AccessTokenJackson2Serializer());
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(module);
+        // 自定义redis序列方式,默认jdk序列化方式
+        tokenStore.setSerializationStrategy(new StandardStringSerializationStrategy() {
+        	private final GenericJackson2JsonRedisSerializer jsonMapper = new GenericJackson2JsonRedisSerializer(objectMapper); 
+        	
+			@Override
+			protected <T> T deserializeInternal(byte[] bytes, Class<T> clazz) {
+				return this.jsonMapper.deserialize(bytes, clazz);
+			}
+
+			@Override
+			protected byte[] serializeInternal(Object object) {
+				try {					
+					return this.jsonMapper.serialize(object);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw e;
+				}
+			}
+        });*/
         return tokenStore;
     }
 

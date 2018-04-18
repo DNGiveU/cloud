@@ -50,10 +50,11 @@
         <appender-ref ref="error" />
     </root>
 
-    <logger name="sun.rmi.loader" level="WARN"/>
-    <logger name="com.zaxxer.hikari" level="WARN"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="org.apache.http" level="WARN"/>
-    <logger name="com.ulisesbocchio" level="WARN"/>
-    <logger name="com.netflix.discovery" level="WARN"/>
+    <logger name="sun.rmi.loader" level="INFO"/>
+    <logger name="com.zaxxer.hikari" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.apache.http" level="INFO"/>
+    <logger name="com.ulisesbocchio" level="INFO"/>
+    <logger name="com.netflix.discovery" level="INFO"/>
+    <logger name="org.springframework.security" level="DEBUG"/>
 </configuration>
