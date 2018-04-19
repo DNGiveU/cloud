@@ -1,5 +1,29 @@
 package com.ngiveu.cloud.admin.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.baomidou.mybatisplus.plugins.Page;
 import com.luhuiguo.fastdfs.domain.StorePath;
 import com.luhuiguo.fastdfs.service.FastFileStorageClient;
@@ -15,18 +39,9 @@ import com.ngiveu.cloud.common.util.R;
 import com.ngiveu.cloud.common.vo.UserVO;
 import com.ngiveu.cloud.common.web.BaseController;
 import com.xiaoleilu.hutool.io.FileUtil;
+
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author lengleng
@@ -189,5 +204,25 @@ public class UserController extends BaseController {
     @PutMapping("/editInfo")
     public R<Boolean> editInfo(@RequestBody UserDTO userDto, UserVO userVo) {
         return new R<>(userService.updateUserInfo(userDto, userVo.getUsername()));
+    }
+    
+    /**
+     * 根据用户ID集合获取用户信息集合
+     * @param userIds
+     * @return
+     * @author gaz
+     */
+    @GetMapping("listUsersByIds")
+    public List<UserVO> listUsersByIds(@RequestParam List<Integer> userIds) {
+    	List<SysUser> sysUsers = this.userService.selectBatchIds(userIds);
+    	List<UserVO> userVOs = new ArrayList<UserVO>(sysUsers.size());
+    	for (SysUser user : sysUsers) {
+    		UserVO vo = new UserVO();
+    		vo.setUserId(user.getUserId());
+    		vo.setUsername(user.getUsername());
+    		vo.setAvatar(user.getAvatar());
+    		userVOs.add(vo);
+    	}
+    	return userVOs;
     }
 }
