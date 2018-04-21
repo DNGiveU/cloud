@@ -25,7 +25,7 @@ public class Comment extends Model<Comment> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
-     * 评论父级ID
+     * 评论父级ID 如果没有则默认为0
      */
     @TableField("comment_pid")
     private Integer commentPid;
