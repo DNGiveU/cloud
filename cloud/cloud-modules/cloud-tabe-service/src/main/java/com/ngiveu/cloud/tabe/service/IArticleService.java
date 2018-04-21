@@ -13,4 +13,5 @@ import com.ngiveu.cloud.tabe.entity.Article;
  */
 public interface IArticleService extends IService<Article> {
 
+	
 }

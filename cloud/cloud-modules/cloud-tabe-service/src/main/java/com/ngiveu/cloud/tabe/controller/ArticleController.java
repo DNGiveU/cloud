@@ -3,6 +3,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,10 @@ import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.vo.UserVO;
 import com.ngiveu.cloud.common.web.BaseController;
 import com.ngiveu.cloud.tabe.entity.Article;
+import com.ngiveu.cloud.tabe.entity.Category;
+import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
 import com.ngiveu.cloud.tabe.service.IArticleService;
+import com.ngiveu.cloud.tabe.service.ICategoryService;
 
 /**
  * <p>
@@ -43,6 +47,9 @@ import com.ngiveu.cloud.tabe.service.IArticleService;
 public class ArticleController extends BaseController {
     @Autowired
     private IArticleService articleService;
+    
+    @Autowired
+    private ICategoryService categoryService;
     
     @Autowired
     private RestTemplate restTemplate;
@@ -65,36 +72,70 @@ public class ArticleController extends BaseController {
     * @param params 分页对象
     * @return 分页对象
     */
-    @SuppressWarnings("unchecked")
 	@RequestMapping("/page")
-    public Page<Article> page(@RequestParam Map<String, Object> params) {
+    public Page<ArticleVO> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
         Page<Article> page = articleService.selectPage(new Query<>(params), new EntityWrapper<>());
         
+        List<Integer> categoryIds = new ArrayList<Integer>();
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         for (Article item : page.getRecords()) {
         	NameValuePair nvp = new BasicNameValuePair("userIds", item.getArticleUserId().toString());
         	nvps.add(nvp);
+        	categoryIds.add(item.getArticleChildCategoryId());
         }
         
-        List<UserVO> userVOs = null;
+        List<Category> categorys = categoryService.selectBatchIds(categoryIds);
+        List userVOs = null;
         try {
 			URI uri = new URIBuilder("http://cloud-upms-service/user/listUsersByIds").addParameters(nvps).build();
-			userVOs = (List<UserVO>) this.restTemplate.getForObject(uri, List.class);
+			userVOs = this.restTemplate.getForObject(uri, List.class);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-        if (userVOs != null) {
-        	for (Article item : page.getRecords()) {
-        		for (UserVO vo : userVOs) {
-        			if (vo.getUserId().equals(item.getArticleUserId())) {
-        				// TODO 待创建VO
+        List<ArticleVO> articleVOs = new ArrayList<ArticleVO>();
+        
+        ArticleVO vo = null;
+        for (Article item : page.getRecords()) {
+        	vo = new ArticleVO();
+        	vo.setId(item.getId());
+        	vo.setCommentCount(item.getArticleCommentCount());
+        	vo.setCreateTime(item.getArticlePostTime());
+        	vo.setLikeCount(item.getArticleLikeCount());
+        	vo.setTitle(item.getArticleTitle());
+        	vo.setUpdateTime(item.getArticleUpdateTime());
+        	vo.setViewCount(item.getArticleViewCount());
+        	vo.setTags(item.getArticleTags());
+        	if (userVOs != null && !userVOs.isEmpty()) {
+        		if (userVOs.get(0) instanceof LinkedHashMap) {
+        			for (LinkedHashMap<String, Object> map : (List<LinkedHashMap<String, Object>>) userVOs) {
+        				if (map.get("userId").equals(item.getArticleUserId())) {
+        					vo.setAuthor((String) map.get("username"));
+        					break ;
+        				}
+        			}
+        		} else if (userVOs.get(0) instanceof UserVO) {
+        			for (UserVO userVO : (List<UserVO>) userVOs) {
+        				if (userVO.getUserId().equals(item.getArticleUserId())) {
+        					vo.setAuthor(userVO.getUsername());
+        					break ;
+        				}
+        			}
+        		}
+        	}
+        	if (categorys != null && !categorys.isEmpty()) {
+        		for (Category category : categorys) {
+        			if (category.getId().equals(item.getArticleChildCategoryId())) {
+        				vo.setCategory(category.getCategoryName());
         				break ;
         			}
         		}
         	}
+        	articleVOs.add(vo);
         }
-        return page;
+        Page<ArticleVO> articleVOPage = new Page<ArticleVO>(page.getCurrent(), page.getSize());
+        articleVOPage.setRecords(articleVOs);
+        return articleVOPage;
     }
 
     /**
