@@ -4,8 +4,10 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
@@ -25,14 +27,17 @@ import org.springframework.web.client.RestTemplate;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.ngiveu.cloud.common.constant.CommonConstant;
+import com.ngiveu.cloud.common.constant.ServiceNameConstant;
 import com.ngiveu.cloud.common.util.Query;
-import com.ngiveu.cloud.common.vo.UserVO;
+import com.ngiveu.cloud.common.util.UserUtils;
 import com.ngiveu.cloud.common.web.BaseController;
 import com.ngiveu.cloud.tabe.entity.Article;
 import com.ngiveu.cloud.tabe.entity.Category;
+import com.ngiveu.cloud.tabe.entity.Comment;
 import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
 import com.ngiveu.cloud.tabe.service.IArticleService;
 import com.ngiveu.cloud.tabe.service.ICategoryService;
+import com.ngiveu.cloud.tabe.service.ICommentService;
 
 /**
  * <p>
@@ -52,6 +57,9 @@ public class ArticleController extends BaseController {
     private ICategoryService categoryService;
     
     @Autowired
+    private ICommentService commentService;
+    
+    @Autowired
     private RestTemplate restTemplate;
 
     /**
@@ -64,6 +72,42 @@ public class ArticleController extends BaseController {
     public Article get(@PathVariable Integer id) {
         return articleService.selectById(id);
     }
+    
+    /**
+     * 获取文章详情(用户/类别/评论等)
+     * 
+     * @param id
+     * @return ArticleVO
+     * @author gaz
+     */
+    @SuppressWarnings("unchecked")
+	@GetMapping("/info/{id}")
+    public ArticleVO getArticle(@PathVariable Integer id) {
+    	Article article = this.articleService.selectById(id);
+    	ArticleVO vo = new ArticleVO();
+    	if (article != null) {
+    		baseToVO(article, vo);
+    		vo.setContent(article.getArticleContent());
+    		
+    		// 用户
+    		Map<String, Object> map = this.restTemplate.getForObject("http://" + ServiceNameConstant.UMPS_SERVICE + "/user/{1}", Map.class, article.getArticleUserId());
+    		vo.setAuthor((String) map.get("username"));
+    		vo.setAvatar((String) map.get("avatar"));
+    		
+    		// 类别
+    		Category category = this.categoryService.selectById(article.getArticleChildCategoryId());
+    		if (category != null) {    			
+    			vo.setCategory(category.getCategoryName());
+    		}
+    		
+    		// 评论
+    		Comment comment = new Comment();
+    		comment.setCommentArticleId(article.getId());
+    		List<Comment> comments = this.commentService.selectList(new EntityWrapper<Comment>(comment));
+    		vo.setComments(comments);
+    	}
+    	return vo;
+    }
 
 
     /**
@@ -72,12 +116,13 @@ public class ArticleController extends BaseController {
     * @param params 分页对象
     * @return 分页对象
     */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/page")
     public Page<ArticleVO> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
         Page<Article> page = articleService.selectPage(new Query<>(params), new EntityWrapper<>());
         
-        List<Integer> categoryIds = new ArrayList<Integer>();
+        Set<Integer> categoryIds = new LinkedHashSet<Integer>();
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         for (Article item : page.getRecords()) {
         	NameValuePair nvp = new BasicNameValuePair("userIds", item.getArticleUserId().toString());
@@ -86,9 +131,9 @@ public class ArticleController extends BaseController {
         }
         
         List<Category> categorys = categoryService.selectBatchIds(categoryIds);
-        List userVOs = null;
+        List<LinkedHashMap<String, Object>> userVOs = null;
         try {
-			URI uri = new URIBuilder("http://cloud-upms-service/user/listUsersByIds").addParameters(nvps).build();
+			URI uri = new URIBuilder("http://" + ServiceNameConstant.UMPS_SERVICE + "/api/user/listUsersByIds").addParameters(nvps).build();
 			userVOs = this.restTemplate.getForObject(uri, List.class);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
@@ -98,28 +143,12 @@ public class ArticleController extends BaseController {
         ArticleVO vo = null;
         for (Article item : page.getRecords()) {
         	vo = new ArticleVO();
-        	vo.setId(item.getId());
-        	vo.setCommentCount(item.getArticleCommentCount());
-        	vo.setCreateTime(item.getArticlePostTime());
-        	vo.setLikeCount(item.getArticleLikeCount());
-        	vo.setTitle(item.getArticleTitle());
-        	vo.setUpdateTime(item.getArticleUpdateTime());
-        	vo.setViewCount(item.getArticleViewCount());
-        	vo.setTags(item.getArticleTags());
+        	baseToVO(item, vo);
         	if (userVOs != null && !userVOs.isEmpty()) {
-        		if (userVOs.get(0) instanceof LinkedHashMap) {
-        			for (LinkedHashMap<String, Object> map : (List<LinkedHashMap<String, Object>>) userVOs) {
-        				if (map.get("userId").equals(item.getArticleUserId())) {
-        					vo.setAuthor((String) map.get("username"));
-        					break ;
-        				}
-        			}
-        		} else if (userVOs.get(0) instanceof UserVO) {
-        			for (UserVO userVO : (List<UserVO>) userVOs) {
-        				if (userVO.getUserId().equals(item.getArticleUserId())) {
-        					vo.setAuthor(userVO.getUsername());
-        					break ;
-        				}
+        		for (LinkedHashMap<String, Object> map : userVOs) {
+        			if (map.get("userId").equals(item.getArticleUserId())) {
+        				vo.setAuthor((String) map.get("username"));
+        				break ;
         			}
         		}
         	}
@@ -135,6 +164,7 @@ public class ArticleController extends BaseController {
         }
         Page<ArticleVO> articleVOPage = new Page<ArticleVO>(page.getCurrent(), page.getSize());
         articleVOPage.setRecords(articleVOs);
+        articleVOPage.setTotal(page.getTotal());
         return articleVOPage;
     }
 
@@ -143,8 +173,17 @@ public class ArticleController extends BaseController {
      * @param  article  实体
      * @return success/false
      */
-    @PostMapping
+    @SuppressWarnings("unchecked")
+	@PostMapping
     public Boolean add(@RequestBody Article article) {
+    	article.setArticleCommentCount(0);
+    	article.setArticleIsComment(0);
+    	article.setArticleLikeCount(0);
+    	article.setArticleParentCategoryId(0);
+    	article.setArticleUpdateTime(new Date());
+    	Map<String, Object> userMap = this.restTemplate.getForObject("http://" + ServiceNameConstant.UMPS_SERVICE + "/user/findUserByUsername/{1}", Map.class, UserUtils.getUser());
+    	article.setArticleUserId((Integer) userMap.get("userId"));
+    	article.setArticleViewCount(0);
         return articleService.insert(article);
     }
 
@@ -192,5 +231,23 @@ public class ArticleController extends BaseController {
     @GetMapping("/count")
     public int count() {
     	return this.articleService.selectCount(null);
+    }
+    
+    /**
+     * 转换成VO
+     * @param article
+     * @param articleVO
+     * @author gaz
+     */
+    private void baseToVO(Article article, ArticleVO articleVO) {
+    	articleVO.setId(article.getId());
+    	articleVO.setCommentCount(article.getArticleCommentCount());
+    	articleVO.setCreateTime(article.getArticlePostTime());
+    	articleVO.setLikeCount(article.getArticleLikeCount());
+    	articleVO.setTitle(article.getArticleTitle());
+    	articleVO.setUpdateTime(article.getArticleUpdateTime());
+    	articleVO.setViewCount(article.getArticleViewCount());
+    	articleVO.setTags(article.getArticleTags());
+    	articleVO.setOrder(article.getArticleOrder());
     }
 }

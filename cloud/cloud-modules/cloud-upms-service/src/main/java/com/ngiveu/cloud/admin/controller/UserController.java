@@ -205,24 +205,4 @@ public class UserController extends BaseController {
     public R<Boolean> editInfo(@RequestBody UserDTO userDto, UserVO userVo) {
         return new R<>(userService.updateUserInfo(userDto, userVo.getUsername()));
     }
-    
-    /**
-     * 根据用户ID集合获取用户信息集合
-     * @param userIds
-     * @return
-     * @author gaz
-     */
-    @GetMapping("listUsersByIds")
-    public List<UserVO> listUsersByIds(@RequestParam List<Integer> userIds) {
-    	List<SysUser> sysUsers = this.userService.selectBatchIds(userIds);
-    	List<UserVO> userVOs = new ArrayList<UserVO>(sysUsers.size());
-    	for (SysUser user : sysUsers) {
-    		UserVO vo = new UserVO();
-    		vo.setUserId(user.getUserId());
-    		vo.setUsername(user.getUsername());
-    		vo.setAvatar(user.getAvatar());
-    		userVOs.add(vo);
-    	}
-    	return userVOs;
-    }
 }

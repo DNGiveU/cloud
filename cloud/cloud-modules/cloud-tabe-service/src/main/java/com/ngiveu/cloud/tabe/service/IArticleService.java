@@ -1,5 +1,8 @@
 package com.ngiveu.cloud.tabe.service;
 
+import java.util.Collection;
+import java.util.List;
+
 import com.baomidou.mybatisplus.service.IService;
 import com.ngiveu.cloud.tabe.entity.Article;
 
@@ -13,5 +16,11 @@ import com.ngiveu.cloud.tabe.entity.Article;
  */
 public interface IArticleService extends IService<Article> {
 
-	
+	/**
+	 * 批量获取标题
+	 * @param batchIds
+	 * @return
+	 * @author gaz
+	 */
+	List<Article> listTitleByBatchIds(Collection<Integer> batchIds);
 }

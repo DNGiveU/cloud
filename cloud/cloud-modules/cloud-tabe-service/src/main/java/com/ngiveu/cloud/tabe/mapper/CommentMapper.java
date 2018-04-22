@@ -1,7 +1,10 @@
 package com.ngiveu.cloud.tabe.mapper;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.ngiveu.cloud.tabe.entity.Comment;
+import com.ngiveu.cloud.tabe.model.vo.CommentVO;
 
 /**
  * <p>

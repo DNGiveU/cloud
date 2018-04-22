@@ -1,10 +1,12 @@
 package com.ngiveu.cloud.tabe.mapper;
 
+import java.util.Collection;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.ngiveu.cloud.tabe.entity.Article;
-import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
 
 /**
  * <p>
@@ -16,4 +18,11 @@ import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
  */
 public interface ArticleMapper extends BaseMapper<Article> {
 
+	/**
+	 * 批量获取标题
+	 * @param batchIds
+	 * @return
+	 * @author gaz
+	 */
+	List<Article> listTitleByBatchIds(@Param("batchIds") Collection<Integer> batchIds);
 }

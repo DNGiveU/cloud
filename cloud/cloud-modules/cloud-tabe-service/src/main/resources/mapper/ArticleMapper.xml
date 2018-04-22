@@ -26,5 +26,14 @@
     <sql id="Base_Column_List">
         id, article_user_id AS articleUserId, article_title AS articleTitle, article_content AS articleContent, article_parent_category_id AS articleParentCategoryId, article_child_category_id AS articleChildCategoryId, article_tags AS articleTags, article_view_count AS articleViewCount, article_comment_count AS articleCommentCount, article_like_count AS articleLikeCount, article_post_time AS articlePostTime, article_update_time AS articleUpdateTime, article_is_comment AS articleIsComment, article_status AS articleStatus, article_order AS articleOrder, del_flag AS delFlag
     </sql>
-
+	
+	<!-- 批量获取标题 -->
+	<select id="listTitleByBatchIds" resultType="article">
+		SELECT 
+			id, article_title AS articleTitle
+		FROM article WHERE id IN 
+		<foreach collection="batchIds" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
 </mapper>

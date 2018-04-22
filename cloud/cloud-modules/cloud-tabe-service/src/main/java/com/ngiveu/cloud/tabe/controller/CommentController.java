@@ -1,6 +1,10 @@
 package com.ngiveu.cloud.tabe.controller;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +22,11 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.web.BaseController;
+import com.ngiveu.cloud.tabe.entity.Article;
 import com.ngiveu.cloud.tabe.entity.Comment;
+import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
+import com.ngiveu.cloud.tabe.model.vo.CommentVO;
+import com.ngiveu.cloud.tabe.service.IArticleService;
 import com.ngiveu.cloud.tabe.service.ICommentService;
 
 /**
@@ -34,6 +42,9 @@ import com.ngiveu.cloud.tabe.service.ICommentService;
 public class CommentController extends BaseController {
     @Autowired
     private ICommentService commentService;
+    
+    @Autowired
+    private IArticleService articleService;
 
     /**
     * 通过ID查询
@@ -54,9 +65,43 @@ public class CommentController extends BaseController {
     * @return 分页对象
     */
     @RequestMapping("/page")
-    public Page page(@RequestParam Map<String, Object> params) {
-        params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
-        return commentService.selectPage(new Query<>(params), new EntityWrapper<>());
+    public Page<CommentVO> page(@RequestParam Map<String, Object> params) {
+        Comment commentCondition = new Comment();
+        commentCondition.setDelFlag(CommonConstant.STATUS_NORMAL);
+        Page<Comment> commentPage = commentService.selectPage(new Query<>(params)); // selectPage(new Query<>(params), null);
+        Page<CommentVO> commentVOPage = new Page<>(commentPage.getCurrent(), commentPage.getSize());
+        List<CommentVO> commentVOs = new ArrayList<CommentVO>(commentPage.getRecords().size());
+        Set<Integer> articleIds = new HashSet<Integer>(commentVOs.size());
+        for (Comment comment : commentPage.getRecords()) {
+        	if (comment.getCommentArticleId() != null) {        		
+        		articleIds.add(comment.getCommentArticleId());
+        	}
+        }
+        List<Article> articles = this.articleService.listTitleByBatchIds(articleIds);
+        CommentVO vo = null;
+        for (Comment comment : commentPage.getRecords()) {
+        	vo = new CommentVO();
+        	vo.setAgent(comment.getCommentAgent());
+        	vo.setAuthor(comment.getCommentAuthorName());
+        	vo.setContent(comment.getCommentContent());
+        	vo.setCreateTime(comment.getCommentCreateTime());
+        	vo.setEmail(comment.getCommentAuthorEmail());
+        	vo.setId(comment.getId());
+        	vo.setIp(comment.getCommentIp());
+        	vo.setPid(comment.getCommentPid());
+        	vo.setUrl(comment.getCommentAuthorUrl());
+        	for (Article article : articles) {
+        		if (article.getId().equals(comment.getCommentArticleId())) {
+        			vo.setArticleTitle(article.getArticleTitle());
+        			break ;
+        		}
+        	}
+        	commentVOs.add(vo);
+        }
+        
+        commentVOPage.setRecords(commentVOs);
+        commentVOPage.setTotal(commentPage.getTotal());
+        return commentVOPage;
     }
 
     /**

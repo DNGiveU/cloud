@@ -1,6 +1,9 @@
 package com.ngiveu.cloud.tabe.model.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import com.ngiveu.cloud.tabe.entity.Comment;
 
 import lombok.Data;
 
@@ -21,6 +24,8 @@ public class ArticleVO {
 	private String title;
 	/** 类别 */
 	private String category;
+	/** 排序 */
+	private Integer order;
 	/** 游览数量 */
 	private Integer viewCount;
 	/** 评论数量 */
@@ -33,4 +38,12 @@ public class ArticleVO {
 	private Date updateTime;
 	/** tag标签 */
 	private String tags;
+	/** 评论 */
+	private List<Comment> comments;
+	
+	// ----- 详情 -----
+	/** 用户头像 */
+	private String avatar;
+	/** 内容 */
+	private String content;
 }
