@@ -8,6 +8,14 @@
 
 <h2 align="center">Supporting gaz</h2>  
 
+### TODO
+
+  - 文章评论
+  - 标签统计
+  - 书籍/视频管理
+  - 笔记
+  - 个人数据挖掘
+
 ### 项目结构
 ``` lua
 cloud
@@ -82,4 +90,17 @@ curl -H "Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1M
 ### FAQ
 ```java
 1. 如果出现实体类转换失败(ClassCastException),则估计redis缓存的锅,从redis中可以取出对象并反序列化成功,但无法再次转换. 即redis->Object可以. 但是方法返回Object或者传递Object时,则出现无法转换的异常
+
+2. pinpoint没有数据
+	https://github.com/naver/pinpoint/issues/3823
+	修改pinpoint配置文件pinpoint.config
+	预计是访问量太少,导致收集的数据很少(默认是1/20);所以设置profiler.sampling.rate=1即(1/1=100%)
+	还可以改变类型:
+	profiler.applicationservertype=SPRING_BOOT
+	profiler.tomcat.conditional.transform=false
+	
+	对节点的重命名(在启动参数中加入节点名字):
+	-Dpinpoint.applicationName=ProjectB
+	
+	服务类型列表:https://github.com/naver/pinpoint/issues/3846
 ```
