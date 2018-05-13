@@ -251,7 +251,8 @@ public class ArticleController extends BaseController {
      * @return
      * @author gaz
      */
-    @HystrixCommand(fallbackMethod = "listBatchUserVOsFallback")
+    @SuppressWarnings("unchecked")
+	@HystrixCommand(fallbackMethod = "listBatchUserVOsFallback")
     public List<UserVO> listBatchUserVOs(URI uri) {
     	List<UserVO> userVOs = this.restTemplate.getForObject(uri, List.class);
     	return userVOs;

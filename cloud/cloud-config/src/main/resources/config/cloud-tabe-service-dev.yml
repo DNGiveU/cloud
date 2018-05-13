@@ -59,3 +59,9 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: true
+fdfs:
+  # 获取文件服务地址-nginx入口
+  file-host: http://192.168.0.200:8888/
+  # fdfs tracker-server 文件服务器上传地址
+  tracker-list:
+    - 192.168.0.200:22122

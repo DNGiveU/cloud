@@ -33,7 +33,7 @@ import com.ngiveu.cloud.tabe.service.IBookService;
 @RequestMapping("/book")
 public class BookController extends BaseController {
     @Autowired private IBookService bookService;
-
+    
     /**
     * 通过ID查询
     *
