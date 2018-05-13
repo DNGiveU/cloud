@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ngiveu.cloud.tabe.mapper.VideoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ngiveu.cloud.tabe.entity.Video">
+        <id column="id" property="id" />
+        <result column="del_flag" property="delFlag" />
+        <result column="video_name" property="videoName" />
+        <result column="video_url" property="videoUrl" />
+        <result column="video_introducation" property="videoIntroducation" />
+        <result column="video_author" property="videoAuthor" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, del_flag AS delFlag, video_name AS videoName, video_url AS videoUrl, video_introducation AS videoIntroducation, video_author AS videoAuthor, create_time AS createTime, update_time AS updateTime, create_by AS createBy, update_by AS updateBy
+    </sql>
+
+</mapper>

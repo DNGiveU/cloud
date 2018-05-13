@@ -1,7 +1,7 @@
 <template>
     <div class="app-container calendar-list-container">
         <div class="filter-container">
-            <el-button v-if="${table.name}_add" class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="edit">添加
+            <el-button v-if="${package.ModuleName}_${table.name}_add" class="filter-item" style="margin-left: 10px;" @click="handleCreate" type="primary" icon="edit">添加
             </el-button>
         </div>
         <el-table :key='tableKey' :data="list" v-loading="listLoading" element-loading-text="给我一点时间" border fit
@@ -16,10 +16,10 @@
 
             <el-table-column label="操作">
                 <template slot-scope="scope">
-                    <el-button v-if="${table.name}_upd" size="small" type="success"
+                    <el-button v-if="${package.ModuleName}_${table.name}_edit" size="small" type="success"
                                @click="handleUpdate(scope.row)">编辑
                     </el-button>
-                    <el-button v-if="${table.name}_del" size="mini" type="danger"
+                    <el-button v-if="${package.ModuleName}_${table.name}_del" size="mini" type="danger"
                                @click="handleDelete(scope.row)">删除
                     </el-button>
                 </template>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import { fetchList, addObj, putObj, delObj, getObj } from '@/api/${table.name}'
+    import { fetchList, addObj, putObj, delObj, getObj } from '@/api/${package.ModuleName}/${table.name}'
     import waves from '@/directive/waves/index.js' // 水波纹指令
     import { mapGetters } from 'vuex'
 
@@ -74,9 +74,9 @@
                 },
                 dialogFormVisible: false,
                 dialogStatus: '',
-                    ${table.name}_add: false,
-                    ${table.name}_upd: false,
-                    ${table.name}_del: false,
+                ${package.ModuleName}_${table.name}_add: false,
+                ${package.ModuleName}_${table.name}_edit: false,
+                ${package.ModuleName}_${table.name}_del: false,
                 textMap: {
                     update: '编辑',
                     create: '创建'
@@ -100,9 +100,9 @@
         },
         created() {
             this.getList()
-            this.${table.name}_add = this.permissions['${table.name}_add']
-            this.${table.name}_upd = this.permissions['${table.name}_upd']
-            this.${table.name}_del = this.permissions['${table.name}_del']
+            this.${package.ModuleName}_${table.name}_add = this.permissions['${package.ModuleName}_${table.name}_add']
+            this.${package.ModuleName}_${table.name}_upd = this.permissions['${package.ModuleName}_${table.name}_edit']
+            this.${package.ModuleName}_${table.name}_del = this.permissions['${package.ModuleName}_${table.name}_del']
         },
         methods: {
             getList() {
@@ -135,14 +135,15 @@
                         })
             },
             handleCreate() {
-                this.dialogStatus = 'create'
-                this.dialogFormVisible = true
+                this.dialogStatus = 'create';
+                this.dialogFormVisible = true;
+                this.$refs.form.reset();
             },
             handleUpdate(row) {
                 getObj(row.id).then(res => {
-                    this.form = res.data
-                    this.dialogStatus = 'update'
-                    this.dialogFormVisible = true
+                    this.form = res.data;
+                    this.dialogStatus = 'update';
+                    this.dialogFormVisible = true;
                 })
             },
             create(formName) {

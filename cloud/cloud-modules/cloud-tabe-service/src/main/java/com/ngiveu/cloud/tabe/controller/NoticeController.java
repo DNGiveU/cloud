@@ -54,7 +54,7 @@ public class NoticeController extends BaseController {
     * @return 分页对象
     */
     @RequestMapping("/page")
-    public Page page(@RequestParam Map<String, Object> params) {
+    public Page<Notice> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
         return noticeService.selectPage(new Query<>(params), new EntityWrapper<>());
     }

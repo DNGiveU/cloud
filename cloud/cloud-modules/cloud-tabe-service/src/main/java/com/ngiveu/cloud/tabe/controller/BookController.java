@@ -18,32 +18,31 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.web.BaseController;
-import com.ngiveu.cloud.tabe.entity.Link;
-import com.ngiveu.cloud.tabe.service.ILinkService;
+import com.ngiveu.cloud.tabe.entity.Book;
+import com.ngiveu.cloud.tabe.service.IBookService;
 
 /**
  * <p>
- * 第三方链接 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author gaz
- * @since 2018-04-09
+ * @since 2018-05-13
  */
 @RestController
-@RequestMapping("/link")
-public class LinkController extends BaseController {
-    @Autowired
-    private ILinkService linkService;
+@RequestMapping("/book")
+public class BookController extends BaseController {
+    @Autowired private IBookService bookService;
 
     /**
     * 通过ID查询
     *
     * @param id ID
-    * @return Link
+    * @return Book
     */
     @GetMapping("/{id}")
-    public Link get(@PathVariable Integer id) {
-        return linkService.selectById(id);
+    public Book get(@PathVariable Integer id) {
+        return bookService.selectById(id);
     }
 
 
@@ -54,19 +53,19 @@ public class LinkController extends BaseController {
     * @return 分页对象
     */
     @RequestMapping("/page")
-    public Page<Link> page(@RequestParam Map<String, Object> params) {
+    public Page<Book> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
-        return linkService.selectPage(new Query<>(params), new EntityWrapper<>());
+        return bookService.selectPage(new Query<>(params), new EntityWrapper<>());
     }
 
     /**
      * 添加
-     * @param  link  实体
+     * @param  book  实体
      * @return success/false
      */
     @PostMapping
-    public Boolean add(@RequestBody Link link) {
-        return linkService.insert(link);
+    public Boolean add(@RequestBody Book book) {
+        return bookService.insert(book);
     }
 
     /**
@@ -76,21 +75,21 @@ public class LinkController extends BaseController {
      */
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Integer id) {
-        Link link = new Link();
-        link.setId(id);
-        link.setLinkUpdateTime(new Date());
-        link.setDelFlag(CommonConstant.STATUS_DEL);
-        return linkService.updateById(link);
+        Book book = new Book();
+        book.setId(id);
+        book.setUpdateTime(new Date());
+        book.setDelFlag(CommonConstant.STATUS_DEL);
+        return bookService.updateById(book);
     }
 
     /**
      * 编辑
-     * @param  link  实体
+     * @param  book  实体
      * @return success/false
      */
     @PutMapping
-    public Boolean edit(@RequestBody Link link) {
-        link.setLinkUpdateTime(new Date());
-        return linkService.updateById(link);
+    public Boolean edit(@RequestBody Book book) {
+        book.setUpdateTime(new Date());
+        return bookService.updateById(book);
     }
 }

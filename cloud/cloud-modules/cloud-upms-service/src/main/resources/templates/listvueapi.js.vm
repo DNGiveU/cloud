@@ -1,0 +1,39 @@
+import request from '@/utils/request'
+
+export function fetchList(query) {
+  return request({
+    url: '/${package.ModuleName}/${table.name}/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function addObj(obj) {
+  return request({
+    url: '/${package.ModuleName}/${table.name}/',
+    method: 'post',
+    data: obj
+  })
+}
+
+export function delObj(id) {
+  return request({
+    url: '/${package.ModuleName}/${table.name}/' + id,
+    method: 'delete'
+  })
+}
+
+export function putObj(obj) {
+  return request({
+    url: '/${package.ModuleName}/${table.name}',
+    method: 'put',
+    data: obj
+  })
+}
+
+export function getObj(id) {
+  return request({
+    url: '${package.ModuleName}/${table.name}/' + id,
+    method: 'get'
+  })
+}

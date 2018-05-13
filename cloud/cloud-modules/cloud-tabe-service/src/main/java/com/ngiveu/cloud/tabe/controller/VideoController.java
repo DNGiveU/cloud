@@ -18,32 +18,31 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.web.BaseController;
-import com.ngiveu.cloud.tabe.entity.Link;
-import com.ngiveu.cloud.tabe.service.ILinkService;
+import com.ngiveu.cloud.tabe.entity.Video;
+import com.ngiveu.cloud.tabe.service.IVideoService;
 
 /**
  * <p>
- * 第三方链接 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author gaz
- * @since 2018-04-09
+ * @since 2018-05-13
  */
 @RestController
-@RequestMapping("/link")
-public class LinkController extends BaseController {
-    @Autowired
-    private ILinkService linkService;
+@RequestMapping("/video")
+public class VideoController extends BaseController {
+    @Autowired private IVideoService videoService;
 
     /**
     * 通过ID查询
     *
     * @param id ID
-    * @return Link
+    * @return Video
     */
     @GetMapping("/{id}")
-    public Link get(@PathVariable Integer id) {
-        return linkService.selectById(id);
+    public Video get(@PathVariable Integer id) {
+        return videoService.selectById(id);
     }
 
 
@@ -54,19 +53,19 @@ public class LinkController extends BaseController {
     * @return 分页对象
     */
     @RequestMapping("/page")
-    public Page<Link> page(@RequestParam Map<String, Object> params) {
+    public Page<Video> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
-        return linkService.selectPage(new Query<>(params), new EntityWrapper<>());
+        return videoService.selectPage(new Query<>(params), new EntityWrapper<>());
     }
 
     /**
      * 添加
-     * @param  link  实体
+     * @param  video  实体
      * @return success/false
      */
     @PostMapping
-    public Boolean add(@RequestBody Link link) {
-        return linkService.insert(link);
+    public Boolean add(@RequestBody Video video) {
+        return videoService.insert(video);
     }
 
     /**
@@ -76,21 +75,21 @@ public class LinkController extends BaseController {
      */
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Integer id) {
-        Link link = new Link();
-        link.setId(id);
-        link.setLinkUpdateTime(new Date());
-        link.setDelFlag(CommonConstant.STATUS_DEL);
-        return linkService.updateById(link);
+        Video video = new Video();
+        video.setId(id);
+        video.setUpdateTime(new Date());
+        video.setDelFlag(CommonConstant.STATUS_DEL);
+        return videoService.updateById(video);
     }
 
     /**
      * 编辑
-     * @param  link  实体
+     * @param  video  实体
      * @return success/false
      */
     @PutMapping
-    public Boolean edit(@RequestBody Link link) {
-        link.setLinkUpdateTime(new Date());
-        return linkService.updateById(link);
+    public Boolean edit(@RequestBody Video video) {
+        video.setUpdateTime(new Date());
+        return videoService.updateById(video);
     }
 }

@@ -53,7 +53,7 @@ public class PageController extends BaseController {
     * @return 分页对象
     */
     @RequestMapping("/page")
-    public com.baomidou.mybatisplus.plugins.Page page(@RequestParam Map<String, Object> params) {
+    public com.baomidou.mybatisplus.plugins.Page<Page> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
         return pageService.selectPage(new Query<>(params), new EntityWrapper<>());
     }

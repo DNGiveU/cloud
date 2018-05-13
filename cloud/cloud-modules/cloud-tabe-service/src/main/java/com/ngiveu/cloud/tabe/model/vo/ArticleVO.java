@@ -31,7 +31,7 @@ public class ArticleVO {
 	/** 评论数量 */
 	private Integer commentCount;
 	/** 喜爱数量 */
-	private Integer LikeCount;
+	private Integer likeCount;
 	/** 创建时间 */
 	private Date createTime;
 	/** 更新时间 */

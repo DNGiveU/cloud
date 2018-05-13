@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.message.BasicNameValuePair;
@@ -26,10 +27,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.constant.ServiceNameConstant;
 import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.util.UserUtils;
+import com.ngiveu.cloud.common.vo.UserVO;
 import com.ngiveu.cloud.common.web.BaseController;
 import com.ngiveu.cloud.tabe.entity.Article;
 import com.ngiveu.cloud.tabe.entity.Category;
@@ -120,7 +124,14 @@ public class ArticleController extends BaseController {
 	@RequestMapping("/page")
     public Page<ArticleVO> page(@RequestParam Map<String, Object> params) {
         params.put(CommonConstant.DEL_FLAG, CommonConstant.STATUS_NORMAL);
-        Page<Article> page = articleService.selectPage(new Query<>(params), new EntityWrapper<>());
+        EntityWrapper<Article> searchEntity = new EntityWrapper<Article>();
+        String articleTitle = (String) params.get("article_title");
+        if (StringUtils.isNotBlank(articleTitle)) {
+        	searchEntity.like("article_title", "%" + articleTitle + "%");
+        } else {
+        	params.remove("article_title");
+        }
+        Page<Article> page = articleService.selectPage(new Query<Article>(params), searchEntity);
         
         Set<Integer> categoryIds = new LinkedHashSet<Integer>();
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
@@ -173,7 +184,6 @@ public class ArticleController extends BaseController {
      * @param  article  实体
      * @return success/false
      */
-    @SuppressWarnings("unchecked")
 	@PostMapping
     public Boolean add(@RequestBody Article article) {
     	article.setArticleCommentCount(0);
@@ -181,8 +191,10 @@ public class ArticleController extends BaseController {
     	article.setArticleLikeCount(0);
     	article.setArticleParentCategoryId(0);
     	article.setArticleUpdateTime(new Date());
-    	Map<String, Object> userMap = this.restTemplate.getForObject("http://" + ServiceNameConstant.UMPS_SERVICE + "/user/findUserByUsername/{1}", Map.class, UserUtils.getUser());
-    	article.setArticleUserId((Integer) userMap.get("userId"));
+    	// Map<String, Object> userMap = this.restTemplate.getForObject("http://" + ServiceNameConstant.UMPS_SERVICE + "/user/findUserByUsername/{1}", Map.class, UserUtils.getUser());
+    	// article.setArticleUserId((Integer) userMap.get("userId"));
+    	UserVO userVo = this.getUserVO();
+    	article.setArticleUserId(userVo.getUserId());
     	article.setArticleViewCount(0);
         return articleService.insert(article);
     }
@@ -231,6 +243,38 @@ public class ArticleController extends BaseController {
     @GetMapping("/count")
     public int count() {
     	return this.articleService.selectCount(null);
+    }
+    
+    /**
+     * 通过ID集合批量获取用户信息
+     * @param uri
+     * @return
+     * @author gaz
+     */
+    @HystrixCommand(fallbackMethod = "listBatchUserVOsFallback")
+    public List<UserVO> listBatchUserVOs(URI uri) {
+    	List<UserVO> userVOs = this.restTemplate.getForObject(uri, List.class);
+    	return userVOs;
+    }
+    
+    public List<UserVO> listBatchUserVOsFallback(URI uri) {
+    	return new ArrayList<UserVO>(0);
+    }
+    
+    /**
+     * 获取用户信息
+     * @return
+     * @author gaz
+     */
+    @HystrixCommand(fallbackMethod = "getUserVOFallback")
+    public UserVO getUserVO() {
+    	UserVO userVO = this.restTemplate.getForObject("http://" + ServiceNameConstant.UMPS_SERVICE + "/user/findUserByUsername/{1}", UserVO.class, UserUtils.getUser());
+    	return userVO;
+    }
+    
+    public UserVO getUserVOFallback() {
+    	logger.info("[服务降级] - 触发 getUserVOFallback");
+    	return new UserVO();
     }
     
     /**

@@ -17,14 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.ngiveu.cloud.common.constant.CommonConstant;
 import com.ngiveu.cloud.common.util.Query;
 import com.ngiveu.cloud.common.web.BaseController;
 import com.ngiveu.cloud.tabe.entity.Article;
 import com.ngiveu.cloud.tabe.entity.Comment;
-import com.ngiveu.cloud.tabe.model.vo.ArticleVO;
 import com.ngiveu.cloud.tabe.model.vo.CommentVO;
 import com.ngiveu.cloud.tabe.service.IArticleService;
 import com.ngiveu.cloud.tabe.service.ICommentService;
